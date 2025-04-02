@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./StylesNavBar/HookahList.scss"; // Подключаем стили
 
-const hookahBars = [
+const hookahBars = [/*Долелать Json*/
     {
         id: 1,
         name: "БрикВуд Перл",
