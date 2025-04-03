@@ -1,0 +1,76 @@
+.community {
+  text-align: center;
+  padding: 40px 20px;
+  background-color: #f9f5f0; // Светлый фон
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+
+  .community-title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #5c3b2e; // Темно-коричневый
+    margin-bottom: 10px;
+  }
+
+  .community-description {
+    font-size: 1.2rem;
+    color: #7a5d4f;
+    margin-bottom: 20px;
+  }
+
+  .community-section {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    max-width: 600px;
+
+    .community-subtitle {
+      font-size: 1.5rem;
+      color: #5c3b2e;
+      margin-bottom: 10px;
+    }
+
+    .community-topics {
+      list-style: none;
+      padding: 0;
+
+      .topic-item {
+        font-size: 1.1rem;
+        padding: 10px;
+        margin: 5px 0;
+        background: #fff6e5; // Светлый оранжевый
+        border-radius: 6px;
+        transition: 0.3s;
+
+        &:hover {
+          background: #ffcc80;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+  .join-button {
+    padding: 12px 20px;
+    font-size: 1.2rem;
+    color: white;
+    background: #ff8c42; // Яркий оранжевый
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+
+    &:hover {
+      background: #e57c34;
+    }
+  }
+}
+.topic-image {
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+  border-radius: 8px;
+  object-fit: cover;
+}

@@ -10,6 +10,7 @@ function NavBar() {
         { path: "/education", label: "Обучение" },
         { path: "/community", label: "Сообщество" },
         { path: "/contacts", label: "Контакты" },
+
     ];
 
     return (
