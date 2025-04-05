@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import NavBar from "./component/NavBar";
-import Header from "./component/Header";
+
 import Home from "./component/Home";
-import "./scss/styles.scss";
+import "./index.scss";
 import HookahList from "./component/ComponentsNavBar/HookahList";
 import Footer from "./component/Footer";
 import Education from "./component/ComponentsNavBar/Education";
@@ -26,7 +26,7 @@ function App() {
             <NavBar />
             <div className="container">
                 <Routes>
-                    <Route path="/" element={<><Header /><Home /></>} />
+                    <Route path="/" element={<Home />} />
                     <Route path="/hookah-list" element={<HookahList hookah={hookahList} />} />
                     <Route path="/education" element={<Education />} />
                     <Route path="/community" element={<Community />} />

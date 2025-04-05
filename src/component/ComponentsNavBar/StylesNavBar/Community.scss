@@ -1,76 +1,102 @@
-.community {
+@import "../../../variables";
+
+.community-container {
+  background-color: var(--bg-dark);
+  color: var(--text-light);
+  padding: 3rem 1rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
   text-align: center;
-  padding: 40px 20px;
-  background-color: #f9f5f0; // Светлый фон
-  border-radius: 10px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
 
-  .community-title {
-    font-size: 2rem;
-    font-weight: bold;
-    color: #5c3b2e; // Темно-коричневый
-    margin-bottom: 10px;
+.community-title {
+  font-size: 2.5rem;
+  color: var(--accent);
+  margin-bottom: 1rem;
+}
+
+.community-description {
+  font-size: 1.2rem;
+  color: var(--text-muted);
+  margin-bottom: 2rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.community-section {
+  margin-bottom: 3rem;
+
+  .community-subtitle {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    color: var(--accent);
   }
 
-  .community-description {
-    font-size: 1.2rem;
-    color: #7a5d4f;
-    margin-bottom: 20px;
-  }
+  .community-cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 карточки в ряд */
+    gap: 1.5rem;
+    list-style: none;
+    padding: 0;
 
-  .community-section {
-    background: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
-    margin: 20px auto;
-    max-width: 600px;
-
-    .community-subtitle {
-      font-size: 1.5rem;
-      color: #5c3b2e;
-      margin-bottom: 10px;
+    @media (max-width: 1024px) {
+      grid-template-columns: repeat(2, 1fr); /* 2 карточки в ряду на экранах меньше 1024px */
     }
 
-    .community-topics {
-      list-style: none;
-      padding: 0;
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr; /* 1 карточка в ряду на экранах меньше 768px */
+    }
 
-      .topic-item {
-        font-size: 1.1rem;
-        padding: 10px;
-        margin: 5px 0;
-        background: #fff6e5; // Светлый оранжевый
-        border-radius: 6px;
-        transition: 0.3s;
+    .community-card {
+      background-color: var(--bg-card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
 
-        &:hover {
-          background: #ffcc80;
-          cursor: pointer;
+      &:hover {
+        transform: scale(1.05); /* Увеличение при наведении */
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Добавляем тень при наведении */
+      }
+
+      .community-card-image {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        transition: opacity 0.3s ease;
+      }
+
+      .community-card-content {
+        padding: 1rem;
+        text-align: center;
+
+        span {
+          font-size: 1.2rem;
+          color: var(--text-light);
         }
       }
     }
   }
+}
 
-  .join-button {
-    padding: 12px 20px;
-    font-size: 1.2rem;
-    color: white;
-    background: #ff8c42; // Яркий оранжевый
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: 0.3s;
+.join-button {
+  display: inline-block;
+  background-color: var(--accent);
+  padding: 1rem 2rem;
+  color: var(--text-light);
+  font-size: 1.125rem;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+  text-align: center;
 
-    &:hover {
-      background: #e57c34;
-    }
+  &:hover {
+    background-color: var(--accent-dark); /* Тёмный оттенок для ховера */
   }
 }
-.topic-image {
-  width: 50px;
-  height: 50px;
-  margin-right: 10px;
-  border-radius: 8px;
-  object-fit: cover;
-}
+
+
+
+
+

@@ -1,25 +1,45 @@
 import React from "react";
+import "./Home.scss";
+import hookahImage from "../Image/HomeImage.avif"; // Импортируем изображение
 
-function Home ()  {
-    return(<div>
-        <div className="card">
-            <div className="card-image" style={{ backgroundImage: "url('https://avatars.mds.yandex.net/get-altay/11409713/2a0000018eae03fcc4c60d430073982a14b6/XXXL')" }}></div>
-            <div className="card-content">
-                <h3>Кальянная-Бар "БрикВуд Перл"</h3>
-                <p>Кальян-бар «БрикВуд Перл» — это место, где вы можете насладиться ароматными кальянами, вкусными коктейлями и уютной атмосферой.</p>
-                <a href="#" className="button">Подробнее</a>
-            </div>
-        </div>
-        <div className="card">
-            <div className="card-image" style={{ backgroundImage: "url('https://avatars.mds.yandex.net/get-tycoon/5657946/2a000001843dff02678c110fc98391e0db8d/priority-headline-background')" }}></div>
-            <div className="card-content">
-                <h3>Кальянная-Бар "Tangiers Lounge"</h3>
-                <p> Tangiers Lounge — это сеть кальянных баров с помпезным интерьером, отдельными VIP-комнатами, мягкими зонами с телевизорами и приставками Sony PlayStation.</p>
-                <a href="#" className="button">Подробнее</a>
-            </div>
-        </div>
-    </div>)
+const Home = () => {
+    return (
+        <section className="home" style={{ backgroundImage: `url(${hookahImage})` }}>
+            <div className="home-container">
+                <h1 className="home-title">Добро пожаловать в Hookah Club</h1>
+                <p className="home-description">
+                    Здесь вы найдете лучшие кальяны, вкусы и советы от экспертов. Присоединяйтесь к нашему сообществу и получайте уникальные знания!
+                </p>
 
-}
+                <div className="home-features">
+                    <div className="feature-card">
+                        <h3>Лучшая кальянная продукция</h3>
+                        <p>Мы предлагаем только качественные кальяны и аксессуары.</p>
+                    </div>
+                    <div className="feature-card">
+                        <h3>Советы от экспертов</h3>
+                        <p>Прокачайте свои навыки с нашими обучающими материалами.</p>
+                    </div>
+                    <div className="feature-card">
+                        <h3>Сообщество единомышленников</h3>
+                        <p>Обсуждайте, делитесь опытом и находите новых друзей.</p>
+                    </div>
+                </div>
+
+                <div className="home-buttons">
+                    <a href="/community" className="button join-community">
+                        Присоединиться
+                    </a>
+                    <a href="/booking" className="button book-lounge">
+                        Забронировать кальянную
+                    </a>
+                </div>
+            </div>
+        </section>
+    );
+};
 
 export default Home;
+
+
+

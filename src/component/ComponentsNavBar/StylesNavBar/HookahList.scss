@@ -1,55 +1,97 @@
+@import "../../../variables";
+
 .hookah-list {
-  text-align: center;
-  padding: 50px 20px;
+  padding: 3rem 1rem;
+  background-color: var(--bg-dark);
+  color: var(--text-light);
+
+  .hookah-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    color: var(--accent);
+  }
+
+  .hookah-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 элемента в ряду */
+    gap: 2rem;
+    padding: 0;
+    list-style: none;
+
+    @media (max-width: 1200px) {
+      grid-template-columns: repeat(3, 1fr); /* 3 элемента для средних экранов */
+    }
+
+    @media (max-width: 768px) {
+      grid-template-columns: repeat(2, 1fr); /* 2 элемента для мобильных экранов */
+    }
+
+    @media (max-width: 480px) {
+      grid-template-columns: 1fr; /* 1 элемент на маленьких экранах */
+    }
+  }
+
+  .hookah-card {
+    background-color: var(--bg-card);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    &:hover {
+      transform: translateY(-5px);
+    }
+
+    .hookah-image {
+      height: 300px; /* Уменьшаем высоту изображения */
+      background-size: cover;
+      background-position: center;
+    }
+
+    .hookah-content {
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between; /* Убедимся, что контент растягивается, и кнопка всегда внизу */
+      height: 100%; /* Заполняем доступное пространство карточки */
+
+      h3 {
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+        color: var(--text-light);
+      }
+
+      p {
+        font-size: 1.1rem;
+        margin-bottom: 1rem;
+        color: var(--text-muted);
+      }
+
+      .button {
+        margin-top: 1.5rem; /* Расстояние между текстом и кнопкой */
+        display: inline-block;
+        background-color: var(--accent);
+        color: var(--text-light);
+        padding: 1rem 2rem;; /* Уменьшаем padding для кнопки */
+        border-radius: 5px;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 1.125rem; /* Уменьшаем размер текста в кнопке */
+        width: 170px; /* Устанавливаем фиксированную ширину для кнопки */
+        text-align: center; /* Выравнивание текста по центру */
+        transition: background-color 0.3s;
+
+        &:hover {
+          background-color: var(--accent-dark); /* Тёмный оттенок для ховера */
+          transform: scale(1.05);
+        }
+      }
+    }
+  }
 }
 
-.hookah-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 20px;
-  justify-content: center;
-  margin-top: 20px;
-}
 
-.hookah-card {
-  background: white;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-  text-align: left;
-}
-
-.hookah-image {
-  width: 100%;
-  height: 200px;
-  background-size: cover;
-  background-position: center;
-}
-
-.hookah-content {
-  padding: 15px;
-}
-
-.hookah-content h3 {
-  margin: 0;
-  font-size: 20px;
-}
-
-.hookah-content p {
-  font-size: 14px;
-  color: #666;
-}
-
-.button {
-  display: inline-block;
-  margin-top: 10px;
-  background-color: #f4a261;
-  color: white;
-  padding: 10px 15px;
-  text-decoration: none;
-  border-radius: 5px;
-}
-
-.button:hover {
-  background-color: #e76f51;
-}
