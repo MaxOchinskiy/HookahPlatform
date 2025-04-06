@@ -1,13 +1,12 @@
-@import "../variables"; /* Импортируем переменные, если нужно */
+@use "../variables"; /* Импортируем переменные, если нужно */
 
 .home {
   background-color: var(--bg-dark); /* Тёмный фон, если изображение не загрузится */
   background-size: cover;
   background-position: center;
-  padding: 5rem 2rem;
+  padding: 10rem 1rem;
   text-align: center;
   color: var(--text-light);
-  background-blur: 10px; /* Добавляем размытие фона для улучшения контраста текста */
 
   .home-container {
     max-width: 1200px;
@@ -22,6 +21,7 @@
       font-size: 3rem;
       font-weight: 600;
       margin-bottom: 1rem;
+      color: var(--accent);
     }
 
     .home-description {
@@ -35,14 +35,16 @@
       justify-content: space-between;
       gap: 2rem;
       margin-bottom: 2rem;
+      flex-wrap: wrap; /* Подгоняет карточки под размер экрана */
 
       .feature-card {
         background-color: var(--bg-card);
         padding: 2rem;
         border-radius: 8px;
         box-shadow: var(--shadow);
-        flex: 1;
+        flex: 1 1 220px; /* Минимальная ширина карточки */
         text-align: left;
+        margin-bottom: 2rem; /* Добавляет отступы снизу, чтобы не слипались */
 
         h3 {
           font-size: 1.5rem;
@@ -78,5 +80,3 @@
     }
   }
 }
-
-

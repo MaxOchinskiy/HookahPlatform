@@ -4,7 +4,7 @@
   --bg-card: #2b2b2b;
   --accent: #e4a788;
   --accent-hover: #f4bb9b;
-  --text-light: #f1f1f1;
+  --text-light: #ffffff;
   --text-muted: #d6d6d6;
   --error: #ff6b6b;
 
@@ -14,4 +14,29 @@
 
   // Шрифты
   --font-main: 'Segoe UI', sans-serif;
+
+  // Размеры шрифтов
+  --font-size-base: 1rem; // Основной размер текста
+  --font-size-lg: 1.125rem; // Большой размер
+  --font-size-xl: 1.25rem; // Очень большой размер
+
+  // Цвета для ссылок
+  --link-color: var(--accent);
+  --link-hover-color: var(--accent-hover);
+
+  // Время и функции анимаций
+  --transition-duration: 0.3s;
+  --transition-ease: ease;
+
+  // Размеры
+  --spacing-small: 1rem;
+  --spacing-medium: 2rem;
+  --spacing-large: 3rem;
+
+  // Состояния
+  --success: #4caf50; // Зеленый для успеха
+  --warning: #ff9800; // Оранжевый для предупреждений
+  --info: #2196f3; // Синий для информации
+
+
 }

@@ -1,0 +1,63 @@
+@use "../../../variables"; // Подключаем переменные
+
+.about-us {
+  padding: 8rem 1rem; // Исправляем padding для мобильных
+  background-color: var(--bg-dark);
+  color: var(--text-light);
+
+  .about-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    color: var(--accent);
+    @media (max-width: 768px) {
+      font-size: 2rem; // Уменьшаем размер заголовка на мобильных
+    }
+  }
+
+  .about-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .about-text {
+      flex: 1;
+      font-size: 1.2rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 2rem; // Добавляем отступ снизу, чтобы текст не прилегал к картинке
+
+      p {
+        margin-bottom: 1.5rem;
+      }
+
+      @media (max-width: 768px) {
+        font-size: 1.125rem; // Уменьшаем размер текста на мобильных
+        margin-bottom: 1rem;
+      }
+    }
+
+    .about-image {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+
+      img {
+        max-width: 100%;
+        height: auto;
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        @media (max-width: 768px) {
+          max-width: 80%; // Уменьшаем размер изображения на мобильных
+        }
+      }
+    }
+  }
+}
+

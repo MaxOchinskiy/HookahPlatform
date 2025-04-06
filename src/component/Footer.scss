@@ -1,8 +1,8 @@
-@import "../variables";
+@use "../variables";
 
 .footer {
   background-color: var(--bg-card);
-  padding: 2rem 1rem;
+  padding: 0.1rem 1rem;
   box-shadow: var(--shadow);
   color: var(--text-muted);
   text-align: center;
@@ -71,4 +71,11 @@
     color: var(--text-muted);
   }
 }
+.footer-logo-img {
+  height: 50px;
+  object-fit: contain;
+
+}
+
+
 

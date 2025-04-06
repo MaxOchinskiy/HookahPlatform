@@ -1,10 +1,25 @@
-@import 'variables';
-body {
+@use 'variables';
+
+html, body {
+  height: 100%;
   margin: 0;
   padding: 0;
   background-color: var(--bg-dark);
   color: var(--text-light);
-  font-family: var(--font-main);
+}
+
+#root {
+  height: 100%;
+}
+
+.layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-content {
+  flex: 1;
 }
 
 a {
@@ -16,9 +31,7 @@ a {
   }
 }
 
-button {
-  font-family: var(--font-main);
-}
+
 
 
 

@@ -1,4 +1,4 @@
-@import "../../../variables";
+@use "../../../variables";
 
 .hookah-list {
   padding: 3rem 1rem;
@@ -47,7 +47,7 @@
     }
 
     .hookah-image {
-      height: 300px; /* Уменьшаем высоту изображения */
+      height: 300px; /* Можно сделать более гибким для адаптивности */
       background-size: cover;
       background-position: center;
     }
@@ -71,27 +71,30 @@
         color: var(--text-muted);
       }
 
+      .hookah-buttons {
+        display: flex;
+        gap: 10px; /* Промежуток между кнопками */
+        margin-top: auto; /* Подтягиваем кнопки к низу */
+      }
+
       .button {
-        margin-top: 1.5rem; /* Расстояние между текстом и кнопкой */
-        display: inline-block;
         background-color: var(--accent);
         color: var(--text-light);
-        padding: 1rem 2rem;; /* Уменьшаем padding для кнопки */
+        padding: 1rem 2rem;
         border-radius: 5px;
         text-decoration: none;
         font-weight: bold;
-        font-size: 1.125rem; /* Уменьшаем размер текста в кнопке */
-        width: 170px; /* Устанавливаем фиксированную ширину для кнопки */
-        text-align: center; /* Выравнивание текста по центру */
-        transition: background-color 0.3s;
+        font-size: 1.125rem;
+        width: auto; /* Делаем ширину кнопки гибкой */
+        max-width: 170px; /* Ограничиваем максимальную ширину */
+        text-align: center;
+        transition: background-color 0.3s, transform 0.3s ease;
 
         &:hover {
-          background-color: var(--accent-dark); /* Тёмный оттенок для ховера */
+          background-color: var(--accent-dark);
           transform: scale(1.05);
         }
       }
     }
   }
 }
-
-

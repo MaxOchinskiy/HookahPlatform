@@ -5,7 +5,7 @@ import "./StylesNavBar/HookahList.scss"; // Подключаем стили
 function HookahList({ hookah }) {
     return (
         <section className="hookah-list container">
-            <h2 className="hookah-title">Лучшие кальянные</h2>
+            <h2 className="hookah-title">Кальянные</h2>
             <div className="hookah-grid">
                 {hookah.map((bar) => (
                     <div key={bar.id} className="hookah-card">
@@ -17,9 +17,19 @@ function HookahList({ hookah }) {
                             <h3>{bar.name}</h3>
                             <p>{bar.description}</p>
                             <p>Адрес: {bar.address}</p>
-                            <Link to={bar.link} className="button">
-                                Подробнее
-                            </Link>
+                            <div className="hookah-buttons">
+                                <Link to={`/hookah/${bar.id}`} className="button">
+                                    Подробнее
+                                </Link>
+                                <a
+                                    className="button"
+                                    href={`https://yandex.ru/maps/2/saint-petersburg/?ll=${bar.long}`}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    Забронировать
+                                </a>
+                            </div>
                         </div>
                     </div>
                 ))}
@@ -29,5 +39,7 @@ function HookahList({ hookah }) {
 }
 
 export default HookahList;
+
+
 
 

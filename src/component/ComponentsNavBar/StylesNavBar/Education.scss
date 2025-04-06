@@ -1,8 +1,6 @@
-@import "../../../variables"; // импорт переменных
-
 .education-section {
   background-color: var(--bg);
-  padding: 4rem 2rem;
+  padding: 11rem 1rem;
   text-align: center;
   color: var(--text-dark);
 
@@ -29,6 +27,10 @@
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 2rem;
     margin-top: 3rem;
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr; // Убедитесь, что на маленьких экранах карточки будут по одной
+    }
   }
 
   .education-card {
@@ -36,8 +38,9 @@
     border-radius: 12px;
     box-shadow: var(--shadow);
     overflow: hidden;
-    transition: transform 0.3s, box-shadow 0.3s;
-    padding: 1.5rem;
+    transition: transform 0.3s, box-shadow 0.3s, opacity 0.3s;
+    opacity: 0;
+    animation: fadeIn 0.5s forwards;
 
     &:hover {
       transform: scale(1.05);
@@ -48,19 +51,31 @@
       width: 100%;
       height: 200px;
       object-fit: cover;
-      border-radius: 8px;
+      border-top-left-radius: 12px;
+      border-top-right-radius: 12px;
     }
 
-    h3 {
-      margin-top: 1rem;
-      font-size: 1.5rem;
-      color: var(--text-dark);
-    }
+    .content {
+      padding: 1.5rem;
 
-    p {
-      font-size: 1rem;
-      color: var(--text-light);
-      margin-top: 0.5rem;
+      h3 {
+        margin-top: 0;
+        font-size: 1.5rem;
+        color: var(--text-dark);
+      }
+
+      p {
+        font-size: 1rem;
+        color: var(--text-light);
+        margin-top: 0.5rem;
+      }
+    }
+  }
+
+  // Добавляем анимацию для появления карточек
+  @keyframes fadeIn {
+    to {
+      opacity: 1;
     }
   }
 }

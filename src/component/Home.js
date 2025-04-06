@@ -1,6 +1,6 @@
 import React from "react";
 import "./Home.scss";
-import hookahImage from "../Image/HomeImage.avif"; // Импортируем изображение
+import hookahImage from "../Image/orig.jpg"; // Импортируем изображение
 
 const Home = () => {
     return (
@@ -24,13 +24,17 @@ const Home = () => {
                         <h3>Сообщество единомышленников</h3>
                         <p>Обсуждайте, делитесь опытом и находите новых друзей.</p>
                     </div>
+                    <div className="feature-card">
+                        <h3>Lounge-Bar</h3>
+                        <p>Смотри и бронируй кальянные своего города.</p>
+                    </div>
                 </div>
 
                 <div className="home-buttons">
                     <a href="/community" className="button join-community">
                         Присоединиться
                     </a>
-                    <a href="/booking" className="button book-lounge">
+                    <a href="/hookah-list" className="button book-lounge">
                         Забронировать кальянную
                     </a>
                 </div>
