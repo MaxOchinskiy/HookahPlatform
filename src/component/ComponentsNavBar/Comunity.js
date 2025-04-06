@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./StylesNavBar/Community.scss";
 
 // Массив для популярных тем

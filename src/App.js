@@ -12,7 +12,7 @@ import HookahDetailPage from "./component/ComponentsNavBar/HookahDetaliPage";
 function App() {
     const [hookahList, setHookahList] = useState([]);
     const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
+    const [error] = useState(null);
 
     useEffect(() => {
         fetch("/Hookah.json")
@@ -21,10 +21,7 @@ function App() {
                 setHookahList(data.hookah);
                 setLoading(false);
             })
-            .catch((error) => {
-                setError("Ошибка загрузки данных");
-                setLoading(false);
-            });
+
     }, []);
 
     if (loading) {
