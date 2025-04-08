@@ -111,4 +111,3 @@ const HookahDetailPage = ({ hookah }) => {
 };
 
 export default HookahDetailPage;
-
