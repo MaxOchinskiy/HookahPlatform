@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, {useState} from "react";
+import {Link} from "react-router-dom";
 import "./ComponentsNavBar/StylesNavBar/NavBar.scss";
 
 const NavBar = () => {
@@ -17,13 +17,16 @@ const NavBar = () => {
                 </Link>
                 <ul className={`navbar-menu ${isMenuOpen ? 'active' : ''}`}>
                     <li>
-                        <Link to="/hookah-list" >Кальянные</Link>
+                        <Link to="/hookah-list">Кальянные</Link>
                     </li>
                     <li>
-                        <Link to="/community" >Сообщество</Link>
+                        <Link to="/community">Сообщество</Link>
                     </li>
                     <li>
-                        <Link to="/education" >Обучение</Link>
+                        <Link to="/education">Обучение</Link>
+                    </li>
+                    <li>
+                        <Link to="/tabaco">Табаки</Link>
                     </li>
                 </ul>
                 <Link to="/auth" className="navbar-auth-button">

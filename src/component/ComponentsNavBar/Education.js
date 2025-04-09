@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom"; // Импортируем Link для навигации
 import "./StylesNavBar/Education.scss";
 
 const Education = () => {
@@ -34,9 +33,7 @@ const Education = () => {
                     </div>
 
                     <div className="education-card">
-                        {/* Добавляем Link для перехода */}
-                        <Link to="/tabaco">
-                            <img
+                        <img
                                 src="https://pp.userapi.com/c830208/v830208340/fa9be/4-yUQLBwo8Q.jpg"
                                 alt="Смешивание вкусов"
                                 className={`education-card-image ${imagesLoaded ? 'loaded' : ''}`}
@@ -47,7 +44,6 @@ const Education = () => {
                                 <h3>Смешивание вкусов</h3>
                                 <p>Комбинируй табаки и создавай уникальные вкусы.</p>
                             </div>
-                        </Link>
                     </div>
 
                     <div className="education-card">
