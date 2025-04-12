@@ -1,29 +1,29 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import {useParams} from "react-router-dom";
 import Slider from "react-slick";
 import "./StylesNavBar/HookahDetailPage.scss";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-// Обновленный компонент стрелок
-const PrevArrow = ({ onClick }) => (
+// компонент стрелок
+const PrevArrow = ({onClick}) => (
     <button className="custom-arrow prev" onClick={onClick}>
         <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2">
-            <path d="M15 18l-6-6 6-6" />
+            <path d="M15 18l-6-6 6-6"/>
         </svg>
     </button>
 );
 
-const NextArrow = ({ onClick }) => (
+const NextArrow = ({onClick}) => (
     <button className="custom-arrow next" onClick={onClick}>
         <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2">
-            <path d="M9 6l6 6-6 6" />
+            <path d="M9 6l6 6-6 6"/>
         </svg>
     </button>
 );
 
-const HookahDetailPage = ({ hookah }) => {
-    const { id } = useParams();
+const HookahDetailPage = ({hookah}) => {
+    const {id} = useParams();
     const bar = hookah.find((bar) => bar.id.toString() === id);
 
     if (!bar) {
@@ -37,8 +37,8 @@ const HookahDetailPage = ({ hookah }) => {
         slidesToShow: 1,
         slidesToScroll: 1,
         arrows: true,
-        prevArrow: <PrevArrow />,
-        nextArrow: <NextArrow />,
+        prevArrow: <PrevArrow/>,
+        nextArrow: <NextArrow/>,
     };
 
     return (
@@ -75,7 +75,7 @@ const HookahDetailPage = ({ hookah }) => {
                     <Slider {...sliderSettings}>
                         {bar.images.map((image, index) => (
                             <div key={index}>
-                                <img src={image} alt={`Image ${index}`} />
+                                <img src={image} alt={`Image ${index}`}/>
                             </div>
                         ))}
                     </Slider>
@@ -83,16 +83,16 @@ const HookahDetailPage = ({ hookah }) => {
             </div>
 
             <div className="section">
-                <h2>Цены и акции</h2>
-                <p>{bar.prices}</p>
+                <h2>Цены</h2>
+                <p>{bar.price}</p>
             </div>
 
             <div className="section">
-                <h2>Календарь бронирований</h2>
+                <h2>Бронирование</h2>
                 <p>
                     Проверьте доступные столы для бронирования{" "}
                     <a
-                        href="https://yandex.ru/maps/2/saint-petersburg/?ll=30.150795%2C59.858067&mode=poi&poi%5Bpoint%5D=30.150149%2C59.858241&poi%5Buri%5D=ymapsbm1%3A%2F%2Forg%3Foid%3D114866836014&z=19.44"
+                        href={bar.imageMap}
                         target="_blank"
                         rel="noopener noreferrer"
                     >
@@ -100,11 +100,23 @@ const HookahDetailPage = ({ hookah }) => {
                     </a>.
                 </p>
             </div>
-
             <div className="section">
                 <h2>Контактная информация</h2>
                 <p>{bar.contactInfo}</p>
                 <p>{bar.address}</p>
+            </div>
+            <div className="map">
+                <a href={bar.nameUrl}
+                   className="name"> </a>
+                <a href={bar.bio}
+                   className="bio"> </a>
+                <a href={bar.info}
+                   className="info"> </a>
+                <iframe
+                    src={bar.imageMap}
+                    className="frame1"
+                    title="Map">
+                </iframe>
             </div>
         </section>
     );

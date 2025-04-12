@@ -1,8 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./StylesNavBar/HookahList.scss"; // Подключаем стили
+import "./StylesNavBar/HookahList.scss";
 
-function HookahList({ hookah }) {
+
+function HookahList({hookah}) {
     return (
         <section className="hookah-list container">
             <h2 className="hookah-title">Кальянные</h2>
@@ -23,7 +24,7 @@ function HookahList({ hookah }) {
                                 </Link>
                                 <a
                                     className="button"
-                                    href={`https://yandex.ru/maps/2/saint-petersburg/?ll=${bar.long}`}
+                                    href={bar.imageMap}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >

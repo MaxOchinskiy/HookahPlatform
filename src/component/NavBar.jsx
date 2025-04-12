@@ -1,8 +1,9 @@
 import React, {useState} from "react";
 import {Link} from "react-router-dom";
 import "./ComponentsNavBar/StylesNavBar/NavBar.scss";
+import Search from "./ComponentsNavBar/Search/Search";
 
-const NavBar = () => {
+function NavBar ({searchValue, setSearchValue})  {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     const toggleMenu = () => {
@@ -29,6 +30,7 @@ const NavBar = () => {
                         <Link to="/tabaco">Табаки</Link>
                     </li>
                 </ul>
+                <Search searchValue={searchValue} setSearchValue={setSearchValue}/>
                 <Link to="/auth" className="navbar-auth-button">
                     Войти
                 </Link>
@@ -41,7 +43,7 @@ const NavBar = () => {
             </div>
         </nav>
     );
-};
+}
 
 export default NavBar;
 

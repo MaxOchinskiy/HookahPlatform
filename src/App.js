@@ -15,6 +15,7 @@ function App() {
     const [hookahList, setHookahList] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [searchValue, setSearchValue] = useState("");
 
     useEffect(() => {
         fetch("https://67f4eef9913986b16fa26cac.mockapi.io/hookah")
@@ -39,7 +40,7 @@ function App() {
 
     return (
         <div className="layout">
-            <NavBar />
+            <NavBar searchValue={searchValue} setSearchValue={setSearchValue} />
             <main className="main-content">
                 <Routes>
                     <Route path="/" element={<Home />} />

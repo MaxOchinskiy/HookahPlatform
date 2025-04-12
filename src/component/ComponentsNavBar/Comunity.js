@@ -59,7 +59,6 @@ const Community = () => {
                     ))}
                 </div>
             </div>
-
             <a
                 href="https://web.telegram.org/k/"
                 target="_blank"

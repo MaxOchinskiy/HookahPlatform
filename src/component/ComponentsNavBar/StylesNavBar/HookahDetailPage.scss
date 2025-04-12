@@ -145,4 +145,39 @@
     right: 10px;
   }
 }
+.map{
+  position:relative;
+  overflow:hidden;
+}
+.name{
+  color:#eee;
+  font-size:12px;
+  position:absolute;
+  top:0
+}
+.bio{
+  color:#eee;
+  font-size:12px;
+  position:absolute;
+  top:14px
+}
+.info{
+  color:#eee;
+  font-size:12px;
+  position:absolute;
+  top:28px
+}
+.frame1 {
+  position: relative;
+  width: 660px;
+  height: 500px;
+  border: 10px solid rgba(33, 28, 29, 0.48); /* светлая рамка */
+  box-shadow: 0 4px 6px rgba(255, 255, 255, 0.47); /* тень для глубины */
+  border-radius: 15px;
+}
+
+
+
+
+
 
