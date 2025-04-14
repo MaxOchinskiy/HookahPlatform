@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, {useEffect, useState} from "react";
 import { Routes, Route } from "react-router-dom";
 import NavBar from "./component/NavBar";
 import Home from "./component/Home";
@@ -11,6 +11,8 @@ import HookahDetailPage from "./component/ComponentsNavBar/HookahDetailPage";
 import preload from "./Image/preloader.svg";
 import Tabaco from "./component/ComponentsNavBar/Tabaco";
 
+
+export const SearchContext = React.createContext('');
 function App() {
     const [hookahList, setHookahList] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -40,19 +42,21 @@ function App() {
 
     return (
         <div className="layout">
-            <NavBar searchValue={searchValue} setSearchValue={setSearchValue} />
+           <SearchContext.Provider value={{searchValue, setSearchValue}}>
+            <NavBar />
             <main className="main-content">
                 <Routes>
                     <Route path="/" element={<Home />} />
-                    <Route path="/hookah-list" element={<HookahList hookah={hookahList} />} />
+                    <Route path="/hookah-list" element={<HookahList hookah={hookahList} searchValue={searchValue} />} />
                     <Route path="/hookah/:id" element={<HookahDetailPage hookah={hookahList} />} />
                     <Route path="/education" element={<Education />} />
-                    <Route path="/tabaco" element={<Tabaco />}/>
+                    <Route path="/tabaco" element={<Tabaco searchValue={searchValue} />}/>
                     <Route path="/community" element={<Community />} />
                     <Route path="/aboutUs" element={<AboutUs />} />
                 </Routes>
             </main>
             <Footer />
+        </SearchContext.Provider>
         </div>
     );
 }

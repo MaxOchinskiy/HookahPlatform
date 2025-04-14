@@ -1,5 +1,6 @@
 .tabaco-container {
   margin: 40px;
+  padding-top: 5px;
 }
 
 .tabaco-container h1 {
@@ -7,6 +8,7 @@
   font-size: 2rem;
   color: var(--accent);
   margin-bottom: 20px;
+  padding-bottom: 30px;
 }
 
 .tabaco-list {
@@ -37,7 +39,7 @@
 
 .tabaco-item img {
   width: 100%;
-  height: auto;
+  height: 200px;
   border-radius: 8px;
 }
 

@@ -1,7 +1,7 @@
 @use "../../../variables"; // Подключаем переменные
 
 .about-us {
-  padding: 8rem 1rem; // Исправляем padding для мобильных
+  padding: 1rem 1rem; // Исправляем padding для мобильных
   background-color: var(--bg-dark);
   color: var(--text-light);
 

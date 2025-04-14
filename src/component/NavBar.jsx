@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 import "./ComponentsNavBar/StylesNavBar/NavBar.scss";
 import Search from "./ComponentsNavBar/Search/Search";
 
-function NavBar ({searchValue, setSearchValue})  {
+function NavBar ()  {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     const toggleMenu = () => {
@@ -30,7 +30,7 @@ function NavBar ({searchValue, setSearchValue})  {
                         <Link to="/tabaco">Табаки</Link>
                     </li>
                 </ul>
-                <Search searchValue={searchValue} setSearchValue={setSearchValue}/>
+                <Search />
                 <Link to="/auth" className="navbar-auth-button">
                     Войти
                 </Link>

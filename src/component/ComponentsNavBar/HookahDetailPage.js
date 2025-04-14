@@ -1,9 +1,10 @@
 import React from "react";
-import {useParams} from "react-router-dom";
+import { useParams } from "react-router-dom";
 import Slider from "react-slick";
 import "./StylesNavBar/HookahDetailPage.scss";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+
 
 // компонент стрелок
 const PrevArrow = ({onClick}) => (
@@ -75,8 +76,9 @@ const HookahDetailPage = ({hookah}) => {
                     <Slider {...sliderSettings}>
                         {bar.images.map((image, index) => (
                             <div key={index}>
-                                <img src={image} alt={`Image ${index}`}/>
+                                <img src={image} alt={`Фото ${index + 1}`} />
                             </div>
+
                         ))}
                     </Slider>
                 </div>
@@ -89,22 +91,24 @@ const HookahDetailPage = ({hookah}) => {
 
             <div className="section">
                 <h2>Бронирование</h2>
-                <p>
-                    Проверьте доступные столы для бронирования{" "}
-                    <a
-                        href={bar.imageMap}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        здесь
-                    </a>.
-                </p>
+                {bar.imageMap ? (
+                    <p>
+                        Проверьте доступные столы для бронирования{" "}
+                        <a href={bar.imageMap} target="_blank" rel="noopener noreferrer">
+                            здесь
+                        </a>.
+                    </p>
+                ) : (
+                    <p>Бронирование не доступно</p>
+                )}
             </div>
+
             <div className="section">
                 <h2>Контактная информация</h2>
                 <p>{bar.contactInfo}</p>
                 <p>{bar.address}</p>
             </div>
+
             <div className="map">
                 <a href={bar.nameUrl}
                    className="name"> </a>
