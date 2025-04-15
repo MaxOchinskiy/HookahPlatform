@@ -1,14 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import './StylesNavBar/Tobaco.scss';
+import Search from "./Search/Search";
+
 
 function Tabaco({searchValue}) {
     const [tabacos, setTabacos] = useState([]);
+
 
     useEffect(() => {
         fetch("https://67f4eef9913986b16fa26cac.mockapi.io/Tabaco")
             .then((response) => response.json())
             .then((tabs) => setTabacos(tabs));
+
     }, []);
+
 
     // Фильтрация по значению поиска
     const filteredTabacos = tabacos.filter((tabaco) => {
@@ -24,6 +29,9 @@ function Tabaco({searchValue}) {
     return (
         <div className="tabaco-container">
             <h1>Табачные смеси</h1>
+            <div className="search-tabaco">
+            <Search/>
+        </div>
             <ul className="tabaco-list">
                 {filteredTabacos.length > 0 ? (
                     filteredTabacos.map((tabaco) => (
@@ -48,7 +56,7 @@ function Tabaco({searchValue}) {
                         </li>
                     ))
                 ) : (
-                    <p className="no-results">Ничего не найдено по запросу «{searchValue}»</p>
+                    <p className="no-result">Ничего не найдено по запросу «{searchValue}»</p>
                 )}
             </ul>
         </div>

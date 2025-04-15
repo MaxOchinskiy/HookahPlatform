@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./StylesNavBar/HookahList.scss";
+import Search from "./Search/Search";
 
 function HookahList({ hookah,searchValue}) {
     const filteredHookah = hookah.filter((item) => {
@@ -14,6 +15,9 @@ function HookahList({ hookah,searchValue}) {
 
     return (
         <section className="hookah-list container">
+            <div className="search-hookah">
+                <Search/>
+            </div>
             <h2 className="hookah-title">Кальянные</h2>
             <div className="hookah-grid">
                 {filteredHookah.length > 0 ? (

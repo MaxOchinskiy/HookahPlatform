@@ -1,6 +1,6 @@
 .tabaco-container {
   margin: 40px;
-  padding-top: 5px;
+
 }
 
 .tabaco-container h1 {
@@ -89,4 +89,12 @@
     font-size: 0.9rem;
   }
 }
-
+.search-tabaco {
+  position: absolute;
+  left: 70%;
+  top: 120px;
+}
+.no-result{
+  position: absolute;
+  left: 43%;
+}

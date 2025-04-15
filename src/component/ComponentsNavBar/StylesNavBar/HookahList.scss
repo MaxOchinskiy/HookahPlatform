@@ -1,7 +1,7 @@
 @use "../../../variables";
 
 .hookah-list {
-  padding: 0 1rem;
+  padding:2rem;
   background-color: var(--bg-dark);
   color: var(--text-light);
 
@@ -97,4 +97,14 @@
       }
     }
   }
+}
+.search-hookah{
+  position: absolute;
+  left: 70%;
+  top: 150px;
+
+}
+.no-results{
+  position: absolute;
+  left: 43%;
 }

@@ -43,7 +43,7 @@ function App() {
     return (
         <div className="layout">
            <SearchContext.Provider value={{searchValue, setSearchValue}}>
-            <NavBar />
+            <NavBar  />
             <main className="main-content">
                 <Routes>
                     <Route path="/" element={<Home />} />

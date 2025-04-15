@@ -1,9 +1,9 @@
 import React, {useState} from "react";
 import {Link} from "react-router-dom";
 import "./ComponentsNavBar/StylesNavBar/NavBar.scss";
-import Search from "./ComponentsNavBar/Search/Search";
 
-function NavBar ()  {
+const NavBar= React.memo(
+function NavBar (){
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     const toggleMenu = () => {
@@ -30,7 +30,6 @@ function NavBar ()  {
                         <Link to="/tabaco">Табаки</Link>
                     </li>
                 </ul>
-                <Search />
                 <Link to="/auth" className="navbar-auth-button">
                     Войти
                 </Link>
@@ -43,7 +42,7 @@ function NavBar ()  {
             </div>
         </nav>
     );
-}
+})
 
 export default NavBar;
 
