@@ -1,6 +1,6 @@
 import React from "react";
 import "./Home.scss";
-import hookahImage from "../Image/orig.jpg"; // Импортируем изображение
+import hookahImage from "../Image/fonHome.jpg"; // Импортируем изображение
 
 const Home = () => {
     return (

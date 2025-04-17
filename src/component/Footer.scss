@@ -35,7 +35,9 @@
     list-style: none;
     display: flex;
     gap: 2rem;
-    margin: 1rem 0;
+    margin: auto;
+    padding: 0;
+
 
     li a {
       color: var(--text-light);
@@ -66,8 +68,8 @@
   }
 
   .footer-copy {
-    margin-top: 1rem;
-    font-size: 0.9rem;
+    margin-top: 2rem;
+    font-size: 1.1rem;
     color: var(--text-muted);
   }
 }

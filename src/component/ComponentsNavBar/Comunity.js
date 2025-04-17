@@ -1,27 +1,28 @@
 import React, { useState } from "react";
 import "./StylesNavBar/Community.scss";
+import hookahImage from "../../Image/fonComunity.jpg";
 
 // Массив для популярных тем
 const popularTopics = [
     {
         img: "https://hookahhouse.ru/upload/iblock/9f0/9f00f7a0e570d7a1a5ab179dd064e7e5.jpg",
         alt: "Вкусы кальяна",
-        text: "Лучшие вкусы для кальяна 🍇",
+        text: "Лучшие вкусы для кальяна ",
     },
     {
         img: "https://hookahhouse.ru/upload/iblock/d20/fwi3s2g2cvcibq00k784xchb8sk536ch.jpg",
         alt: "Забивка чаши",
-        text: "Как правильно забивать чашу? 🤔",
+        text: "Как правильно забивать чашу? ",
     },
     {
         img: "https://smoke-jeen.com/images/thumbnails/380/253/blog/15/img-2dc34bb79a05186f1beded133ac269ba-ugli-dlya-kalyana.jpg",
         alt: "Угли для кальяна",
-        text: "Как выбрать угли для кальяна? 🔥",
+        text: "Как выбрать угли для кальяна? ",
     },
     {
         img: "https://hookahmarket.life/image/catalog/chistka1.png",
         alt: "Обслуживание кальяна",
-        text: "Советы по обслуживанию кальяна 🛠",
+        text: "Советы по обслуживанию кальяна ",
     },
 ];
 
@@ -33,7 +34,7 @@ const Community = () => {
         setImagesLoaded(true);
     };
 
-    return (
+    return (<section className="community" style={{ backgroundImage: `url(${hookahImage})` }}>
         <section className="community-container">
             <h2 className="community-title">Сообщество</h2>
             <p className="community-description">
@@ -41,7 +42,6 @@ const Community = () => {
             </p>
 
             <div className="community-section">
-                <h3 className="community-subtitle">Популярные темы🔥</h3>
                 <div className="community-cards">
                     {popularTopics.map((item, index) => (
                         <div className="community-card" key={index}>
@@ -69,10 +69,13 @@ const Community = () => {
                 Вступить в сообщество
             </a>
         </section>
+</section>
+
     );
 };
 
 export default Community;
+
 
 
 

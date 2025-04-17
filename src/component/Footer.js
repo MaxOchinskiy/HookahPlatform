@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "../component/Footer.scss";
-import logo from "../Image/logo.png"; // путь к логотипу
+import logo from "../Image/logo.png";
 
 const Footer = React.memo(
 function Footer () {
@@ -15,11 +15,6 @@ function Footer () {
                     <li><Link to="/aboutUs">О нас</Link></li>
                     <li><Link to="/contact">Контакты</Link></li>
                 </ul>
-                <div className="footer-socials">
-                    <a href="/#" className="social-icon">📱</a>
-                    <a href="/#" className="social-icon">🐦</a>
-                    <a href="/#" className="social-icon">📷</a>
-                </div>
             </div>
             <p className="footer-copy">© 2025 HookahClub. Все права защищены.</p>
         </footer>

@@ -1,9 +1,9 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
 import "./StylesNavBar/HookahList.scss";
 import Search from "./Search/Search";
 
-function HookahList({ hookah,searchValue}) {
+function HookahList({hookah, searchValue}) {
     const filteredHookah = hookah.filter((item) => {
         const search = searchValue.toLowerCase();
         return (
@@ -25,7 +25,7 @@ function HookahList({ hookah,searchValue}) {
                         <div key={hookah.id} className="hookah-card">
                             <div
                                 className="hookah-image"
-                                style={{ backgroundImage: `url(${hookah.image})` }}
+                                style={{backgroundImage: `url(${hookah.image})`}}
                             ></div>
                             <div className="hookah-content">
                                 <h3>{hookah.name}</h3>

@@ -11,7 +11,6 @@ import HookahDetailPage from "./component/ComponentsNavBar/HookahDetailPage";
 import preload from "./Image/preloader.svg";
 import Tabaco from "./component/ComponentsNavBar/Tabaco";
 
-
 export const SearchContext = React.createContext('');
 function App() {
     const [hookahList, setHookahList] = useState([]);
@@ -36,10 +35,8 @@ function App() {
                 setLoading(false);
             });
     }, []);
-
     if (loading) return <img className="loading" src={preload} alt="loading" />;
     if (error) return <div className="error">Ошибка: {error}</div>;
-
     return (
         <div className="layout">
            <SearchContext.Provider value={{searchValue, setSearchValue}}>

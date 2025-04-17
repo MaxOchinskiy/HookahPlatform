@@ -1,15 +1,17 @@
 @use "../variables"; /* Импортируем переменные, если нужно */
 
 .home {
-  background-color: var(--bg-dark); /* Тёмный фон, если изображение не загрузится */
+  width: 100%; // ✅ на всю ширину
+  min-height: 100vh; // ✅ если нужен фон на всю высоту экрана
+  background-color: var(--bg-dark);
   background-size: cover;
   background-position: center;
-  padding: 4rem 1rem;
+  background-repeat: no-repeat;
   text-align: center;
   color: var(--text-light);
 
   .home-container {
-    max-width: 1200px;
+    max-width:1000px ;
     margin: 0 auto;
     padding: 2rem;
     background-color: rgba(0, 0, 0, 0.6); /* Полупрозрачный фон для текста */
@@ -80,3 +82,4 @@
     }
   }
 }
+

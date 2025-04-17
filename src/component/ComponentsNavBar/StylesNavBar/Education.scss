@@ -1,14 +1,22 @@
 @use "../../../variables";
 
 .education-section {
-  background-color: var(--bg);
-  padding: 11rem 1rem;
+  padding:  1rem;
+  background-color: var(--bg-dark);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   text-align: center;
-  color: var(--text-dark);
+  color: var(--text-light);
 
   .container {
-    max-width: 1200px;
+    max-width:1000px ;
     margin: 0 auto;
+    padding: 2rem;
+    background-color: rgba(0, 0, 0, 0.37); /* Полупрозрачный фон для текста */
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    color: var(--text-light);
   }
 
   .education-title {

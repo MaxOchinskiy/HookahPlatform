@@ -5,11 +5,9 @@ import "./ComponentsNavBar/StylesNavBar/NavBar.scss";
 const NavBar= React.memo(
 function NavBar (){
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
     };
-
     return (
         <nav className="navbar">
             <div className="navbar-container">
@@ -33,7 +31,6 @@ function NavBar (){
                 <Link to="/auth" className="navbar-auth-button">
                     Войти
                 </Link>
-
                 <div className="navbar-hamburger" onClick={toggleMenu}>
                     <span className="bar"></span>
                     <span className="bar"></span>
