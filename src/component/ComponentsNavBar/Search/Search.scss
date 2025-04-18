@@ -27,11 +27,11 @@
 .cleanSvg{
   width: 20px;
   height: 20px;
-  position: absolute;
+  position: relative;
   opacity: 0.5;
-  right: 5px;
-  top: 8px;
-  color: #211c1d;
+  right: 25px;
+  top: 4px;
+  color: rgb(0, 0, 0);
   &:hover{
     opacity: 1;
     cursor: pointer;

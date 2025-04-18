@@ -1,85 +1,96 @@
-@use "../variables"; /* Импортируем переменные, если нужно */
-
 .home {
-  width: 100%; // ✅ на всю ширину
-  min-height: 100vh; // ✅ если нужен фон на всю высоту экрана
-  background-color: var(--bg-dark);
+  width: 100%;
+  height: 100vh; /* Высота на весь экран */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   color: var(--text-light);
 
   .home-container {
-    max-width:1000px ;
-    margin: 0 auto;
+    text-align: center;
+    max-width: 800px;
+    background-color: rgba(0, 0, 0, 0.5); /* Полупрозрачный фон для текста */
     padding: 2rem;
-    background-color: rgba(0, 0, 0, 0.6); /* Полупрозрачный фон для текста */
     border-radius: 8px;
-    box-shadow: var(--shadow);
-    color: var(--text-light);
 
     .home-title {
       font-size: 3rem;
-      font-weight: 600;
-      margin-bottom: 1rem;
+      font-weight: bold;
       color: var(--accent);
-    }
-
-    .home-description {
-      font-size: 1.25rem;
       margin-bottom: 2rem;
-      font-weight: 400;
-    }
-
-    .home-features {
-      display: flex;
-      justify-content: space-between;
-      gap: 2rem;
-      margin-bottom: 2rem;
-      flex-wrap: wrap; /* Подгоняет карточки под размер экрана */
-
-      .feature-card {
-        background-color: var(--bg-card);
-        padding: 2rem;
-        border-radius: 8px;
-        box-shadow: var(--shadow);
-        flex: 1 1 220px; /* Минимальная ширина карточки */
-        text-align: left;
-        margin-bottom: 2rem; /* Добавляет отступы снизу, чтобы не слипались */
-
-        h3 {
-          font-size: 1.5rem;
-          font-weight: 500;
-          margin-bottom: 1rem;
-        }
-
-        p {
-          font-size: 1rem;
-          color: var(--text-light);
-        }
-      }
     }
 
     .home-buttons {
       display: flex;
       justify-content: center;
+      gap: 1.5rem;
+
+      .button {
+        display: inline-block;
+        background-color: var(--accent);
+        padding: 1rem 1.5rem;
+        color: var(--text-light);
+        font-size: 1.125rem;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: background-color 0.3s, transform 0.2s;
+        &:hover {
+          background-color: var(--accent-dark);
+        }
+      }
+    }
+
+    .home-description {
+      margin-top: 2rem; /* Отступ сверху */
+      padding: 1rem 2rem;
+      background-color: rgba(0, 0, 0, 0.4); /* Ещё один слой затемнения */
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+
+      h2 {
+        font-size: 2rem;
+        color: var(--accent);
+        margin-bottom: 1rem;
+      }
+
+      p {
+        font-size: 1.125rem;
+        line-height: 1.6;
+        color: var(--text-light);
+      }
+    }
+  }
+}
+
+.home-buttons {
+      display: flex;
+      justify-content: center;
       gap: 2rem;
 
       .button {
+        box-sizing: border-box; /* Учитываем padding и border в размерах */
         background-color: var(--accent);
         padding: 1rem 2rem;
         color: var(--text-light);
         font-size: 1.125rem;
         text-decoration: none;
         border-radius: 5px;
-        transition: background-color 0.3s;
+        border: 1px solid transparent; /* Задаём прозрачную границу */
+        transition: background-color 0.3s, border-color 0.3s; /* Анимация изменения фона и границы */
 
         &:hover {
-          background-color: var(--accent-dark); /* Тёмный оттенок для ховера */
+          background-color: var(--accent-dark); /* Меняем цвет фона */
+          border-color: var(--accent); /* Меняем границу */
         }
       }
     }
-  }
-}
+
+
+
+
+
+
 
