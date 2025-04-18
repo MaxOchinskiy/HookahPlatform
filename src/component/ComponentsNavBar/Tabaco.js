@@ -5,12 +5,10 @@ import Search from "./Search/Search";
 
 function Tabaco({ searchValue }) {
     const [tabacos, setTabacos] = useState([]);
-    const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
     const [sortOrder, setSortOrder] = useState("asc");
 
     useEffect(() => {
-        setIsLoading(true);
         setError(null);
 
         fetch("https://67f4eef9913986b16fa26cac.mockapi.io/Tabaco")
@@ -25,7 +23,7 @@ function Tabaco({ searchValue }) {
                 console.error('Ошибка:', error);
                 setError('Не удалось загрузить данные. Пожалуйста, попробуйте позже.');
             })
-            .finally(() => setIsLoading(false));
+            
     }, []);
 
     // Фильтрация по значению поиска
