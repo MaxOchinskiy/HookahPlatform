@@ -64,6 +64,7 @@
   .navbar-auth-button {
     box-sizing: border-box; /* Учитываем padding и border в размерах */
     background-color: var(--accent);
+    margin-right:-15rem ;
     padding: 0.7rem 2rem;
     color: var(--text-light);
     font-size: 1.125rem;
@@ -76,7 +77,6 @@
 
     &:hover {
       background-color: var(--accent-dark); /* Меняем цвет фона */
-      border-color: var(--accent);
       border-radius: 5px;
       border: 1px solid var(--accent);
     }
