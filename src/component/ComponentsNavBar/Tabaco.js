@@ -1,74 +1,41 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { setSortOrder } from '../../redux/slices/tabacoSlice';
+import Search from './Search/Search';
 import './StylesNavBar/Tobaco.scss';
-import Search from "./Search/Search";
 
+const Tabaco = () => {
+    const dispatch = useDispatch();
+    const { tabacoList, loading, error } = useSelector((state) => state.data); // Данные из Redux
+    const { searchValue, sortOrder } = useSelector((state) => state.tabaco); // Поиск и сортировка
 
-function Tabaco({ searchValue }) {
-    const [tabacos, setTabacos] = useState([]);
-    const [error, setError] = useState(null);
-    const [sortOrder, setSortOrder] = useState("asc");
+    if (loading) return <p>Загрузка...</p>;
+    if (error) return <p className="error">{error}</p>;
 
-    useEffect(() => {
-        setError(null);
+    // Фильтрация табачных смесей
+    const filteredTabacos = tabacoList.filter((tabaco) =>
+        tabaco.brand.toLowerCase().includes(searchValue.toLowerCase())
+    );
 
-        fetch("https://67f4eef9913986b16fa26cac.mockapi.io/Tabaco")
-            .then((response) => {
-                if (!response.ok) {
-                    throw new Error('Ошибка загрузки данных');
-                }
-                return response.json();
-            })
-            .then((tabs) => setTabacos(tabs))
-            .catch((error) => {
-                console.error('Ошибка:', error);
-                setError('Не удалось загрузить данные. Пожалуйста, попробуйте позже.');
-            })
-
-    }, []);
-
-    // Фильтрация по значению поиска
-    const filteredTabacos = tabacos.filter((tabaco) => {
-        const search = searchValue.toLowerCase();
-        return (
-            tabaco.brand.toLowerCase().includes(search) ||
-            tabaco.description.toLowerCase().includes(search) ||
-            (tabaco.line && tabaco.line.toLowerCase().includes(search)) ||
-            (tabaco.type && tabaco.type.toLowerCase().includes(search))
-        );
-    });
-
-    // Сортировка по названию бренда
-    const sortedTabacos = [...filteredTabacos].sort((a, b) => {
-        if (sortOrder === "asc") {
-            return a.brand.localeCompare(b.brand);
-        } else {
-            return b.brand.localeCompare(a.brand);
-        }
-    });
-    if (error) {
-        return (
-            <div className="tabaco-container">
-                <h1>Табачные смеси</h1>
-                <div className="error-message">{error}</div>
-            </div>
-        );
-    }
+    // Сортировка табачных смесей
+    const sortedTabacos = filteredTabacos.sort((a, b) =>
+        sortOrder === 'asc' ? a.brand.localeCompare(b.brand) : b.brand.localeCompare(a.brand)
+    );
 
     return (
         <div className="tabaco-container">
-            {/* Верхний блок с заголовком, поиском и сортировкой */}
             <div className="tabaco-header">
                 <h1>Табачные смеси</h1>
                 <div className="controls">
                     <div className="search-tabaco">
-                        <Search />
+                        <Search slice="tabaco" />
                     </div>
                     <div className="sort-tabaco">
                         <label htmlFor="sortOrder">Сортировка:</label>
                         <select
                             id="sortOrder"
                             value={sortOrder}
-                            onChange={(e) => setSortOrder(e.target.value)}
+                            onChange={(e) => dispatch(setSortOrder(e.target.value))}
                         >
                             <option value="asc">По названию (А-Я)</option>
                             <option value="desc">По названию (Я-А)</option>
@@ -77,7 +44,6 @@ function Tabaco({ searchValue }) {
                 </div>
             </div>
 
-            {/* Список табака */}
             <ul className="tabaco-list">
                 {sortedTabacos.length > 0 ? (
                     sortedTabacos.map((tabaco) => (
@@ -85,10 +51,9 @@ function Tabaco({ searchValue }) {
                             <img src={tabaco.image} alt={tabaco.brand} />
                             <div className="content">
                                 <h2>{tabaco.brand}</h2>
-                                <p>Бренды : {tabaco.description}</p>
-                                <p>Линейки крепости : {tabaco.line}</p>
-                                <p>Тип : {tabaco.type}</p>
-
+                                <p>Бренды: {tabaco.description}</p>
+                                <p>Линейки крепости: {tabaco.line}</p>
+                                <p>Тип: {tabaco.type}</p>
                                 {tabaco.http && (
                                     <a
                                         href={tabaco.http}
@@ -103,14 +68,11 @@ function Tabaco({ searchValue }) {
                         </li>
                     ))
                 ) : (
-                    <p className="no-result">Ничего не найдено по запросу «{searchValue}»</p>
+                    <p className="no-result">Ничего не найдено по текущему запросу</p>
                 )}
             </ul>
         </div>
     );
-}
+};
 
 export default Tabaco;
-
-
-

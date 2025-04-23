@@ -32,7 +32,10 @@
   .navbar-menu {
     list-style: none;
     display: flex;
-    gap: 2rem;
+    gap: 3rem;
+    margin: 0 -1rem; /* Центровка с помощью margin */
+    padding: 0;
+    position: relative; /* Убираем left */
     li a {
       color: var(--text-light);
       text-decoration: none;
@@ -64,7 +67,7 @@
   .navbar-auth-button {
     box-sizing: border-box; /* Учитываем padding и border в размерах */
     background-color: var(--accent);
-    margin-right:-15rem ;
+    margin-right:-16rem ;
     padding: 0.7rem 2rem;
     color: var(--text-light);
     font-size: 1.125rem;

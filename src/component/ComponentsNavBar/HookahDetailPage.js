@@ -1,31 +1,38 @@
-import React from "react";
-import { useParams } from "react-router-dom";
-import Slider from "react-slick";
-import "./StylesNavBar/HookahDetailPage.scss";
+import React from 'react';
+import { useParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import Slider from 'react-slick';
+import './StylesNavBar/HookahDetailPage.scss';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 
-// компонент стрелок
-const PrevArrow = ({onClick}) => (
+// Компонент стрелок
+const PrevArrow = ({ onClick }) => (
     <button className="custom-arrow prev" onClick={onClick}>
         <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2">
-            <path d="M15 18l-6-6 6-6"/>
+            <path d="M15 18l-6-6 6-6" />
         </svg>
     </button>
 );
 
-const NextArrow = ({onClick}) => (
+const NextArrow = ({ onClick }) => (
     <button className="custom-arrow next" onClick={onClick}>
         <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2">
-            <path d="M9 6l6 6-6 6"/>
+            <path d="M9 6l6 6-6 6" />
         </svg>
     </button>
 );
 
-const HookahDetailPage = ({hookah}) => {
-    const {id} = useParams();
-    const bar = hookah.find((bar) => bar.id.toString() === id);
+const HookahDetailPage = () => {
+    const { id } = useParams();
+    const { hookahList, loading, error } = useSelector((state) => state.data); // Данные из Redux
+
+    if (loading) return <p>Загрузка...</p>;
+    if (error) return <p className="error">{error}</p>;
+
+    // Находим кальянную по ID
+    const bar = hookahList.find((bar) => bar.id.toString() === id);
 
     if (!bar) {
         return <p>Кальянная не найдена</p>;
@@ -38,8 +45,8 @@ const HookahDetailPage = ({hookah}) => {
         slidesToShow: 1,
         slidesToScroll: 1,
         arrows: true,
-        prevArrow: <PrevArrow/>,
-        nextArrow: <NextArrow/>,
+        prevArrow: <PrevArrow />,
+        nextArrow: <NextArrow />,
     };
 
     return (
@@ -75,10 +82,11 @@ const HookahDetailPage = ({hookah}) => {
                 <div className="gallery">
                     <Slider {...sliderSettings}>
                         {bar.images.map((image, index) => (
-                            <div key={index}>
-                                <img src={image} alt={`Фото ${index + 1}`} />
+                            <div key={index} className="image-wrapper">
+                                <div className="image-container">
+                                    <img src={image} alt={`Фото ${index + 1}`} className="img"/>
+                                </div>
                             </div>
-
                         ))}
                     </Slider>
                 </div>
@@ -93,7 +101,7 @@ const HookahDetailPage = ({hookah}) => {
                 <h2>Бронирование</h2>
                 {bar.imageMap ? (
                     <p>
-                        Проверьте доступные столы для бронирования{" "}
+                        Проверьте доступные столы для бронирования{' '}
                         <a href={bar.imageMap} target="_blank" rel="noopener noreferrer">
                             здесь
                         </a>.
@@ -110,17 +118,14 @@ const HookahDetailPage = ({hookah}) => {
             </div>
 
             <div className="map">
-                <a href={bar.nameUrl}
-                   className="name"> </a>
-                <a href={bar.bio}
-                   className="bio"> </a>
-                <a href={bar.info}
-                   className="info"> </a>
+                <a href={bar.nameUrl} className="name"> </a>
+                <a href={bar.bio} className="bio"> </a>
+                <a href={bar.info} className="info"> </a>
                 <iframe
                     src={bar.imageMap}
                     className="frame1"
-                    title="Map">
-                </iframe>
+                    title="Map"
+                ></iframe>
             </div>
         </section>
     );

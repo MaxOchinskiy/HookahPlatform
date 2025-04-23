@@ -1,10 +1,21 @@
-import "./Search.scss"
+import "./Search.scss";
 import React from "react";
-import {SearchContext} from "../../../App";
+import { useDispatch, useSelector } from "react-redux";
 
-function Search(){
-     const {searchValue, setSearchValue} = React.useContext(SearchContext);
-    return (<div className="root">
+function Search({ slice }) {
+    const dispatch = useDispatch();
+    const searchValue = useSelector((state) => state[slice].searchValue); // Подключение к нужному slice
+
+    const handleSearchChange = (e) => {
+        dispatch({ type: `${slice}/setSearchValue`, payload: e.target.value }); // Диспатч для slice
+    };
+
+    const clearSearch = () => {
+        dispatch({ type: `${slice}/setSearchValue`, payload: "" }); // Очистка значения поиска
+    };
+
+    return (
+        <div className="root">
             <svg
                 className="SearchSvg"
                 height="512px" id="Layer_1"
@@ -20,11 +31,11 @@ function Search(){
             </svg>
         <input
             value={searchValue}
-            onChange={(e) => setSearchValue(e.target.value)}
+            onChange={handleSearchChange}
             className="search"
             placeholder="Поиск"/>
             {searchValue && (<svg
-                onClick={()=>setSearchValue('')}
+                onClick={()=>clearSearch('')}
                 className="cleanSvg"
                 fill="none"
                 height="24"
@@ -40,4 +51,5 @@ function Search(){
     </div>
     )
 }
+
 export default Search;

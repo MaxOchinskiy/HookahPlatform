@@ -15,7 +15,7 @@
     margin-bottom: 3rem;
 
     h2 {
-      font-size: 2rem;
+      font-size: 3rem;
       margin-bottom: 1rem;
       color: var(--accent);
     }
@@ -52,16 +52,32 @@
       align-items: center;
     }
 
-    img {
-      width: 100%;
-      max-height: 700px;
-      object-fit: cover;
-      border-radius: 10px;
-      box-shadow: var(--shadow);
-      transition: transform 0.3s ease-in-out;
+    .image-wrapper {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%; // Вписываем ширину в область слайда
+      height: 800px; // Устанавливаем фиксированную меньшую высоту
+    }
 
-      &:hover {
-        transform: scale(1.05);
+    .image-container {
+      position: relative;
+      width: 100%;
+      height: 100%; // Совпадает с высотой контейнера
+      border-radius: 10px;
+      overflow: hidden; // Обеспечиваем ограничение в границе
+      box-shadow: var(--shadow);
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain; // Сохраняем пропорции и избегаем обрезания
+        transition: transform 0.3s ease-in-out;
+
+        &:hover {
+          transform: scale(1.02);
+        }
       }
     }
   }
