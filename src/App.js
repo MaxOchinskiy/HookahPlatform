@@ -11,6 +11,7 @@ import Community from "./component/ComponentsNavBar/Comunity";
 import AboutUs from "./component/ComponentsNavBar/AboutUs";
 import HookahDetailPage from "./component/ComponentsNavBar/HookahDetailPage";
 import Tabaco from "./component/ComponentsNavBar/Tabaco";
+import Auth from "./component/ComponentsNavBar/auth";
 
 function App() {
     const dispatch = useDispatch();
@@ -33,6 +34,7 @@ function App() {
                     <Route path="/tabaco" element={<Tabaco />} />
                     <Route path="/community" element={<Community />} />
                     <Route path="/aboutUs" element={<AboutUs />} />
+                    <Route path="/auth" element={<Auth/>} />
                 </Routes>
             </main>
             <Footer />
