@@ -1,61 +1,111 @@
 .auth-container {
   display: flex;
-  justify-content: center; /* Центрируем по горизонтали */
-  align-items: center; /* Центрируем по вертикали */
-  min-height: 100vh; /* Заполняем всю высоту экрана */
-  background-color: var(--bg-dark); /* Цвет фона страницы */
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: var(--bg-dark);
 }
 
 .auth-text {
-  background-color: var(--bg-light); /* Цвет фона формы */
-  color: var(--accent); /* Цвет текста */
-  text-align: center; /* Центрируем текст внутри */
-  padding: 100px; /* Внутренние отступы для формы */
-  border-radius: 8px; /* Скругленные углы формы */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Добавляем тень */
-  max-width: 400px; /* Ограничиваем максимальную ширину формы */
-  width: 100%; /* Форма занимает всю доступную ширину */
+  background-color: var(--bg-light);
+  color: var(--accent);
+  text-align: center;
+  padding: 3rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  max-width: 400px;
+  width: 100%;
 }
 
 .auth-text > *:not(:last-child) {
-  margin-bottom: 30px; /* Отступы между элементами внутри формы */
+  margin-bottom: 2rem;
+}
+
+.headerAuth {
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--accent);
 }
 
 .textLog {
-  display: flex; /* Создаем flex-контейнер */
-  align-items: center; /* Выровнять текст и поле по вертикали */
-  gap: 10px; /* Расстояние между текстом и полем ввода */
-  margin-bottom: 15px; /* Отступ снизу у каждого поля */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+
+  label {
+    min-width: 70px;
+    color: var(--accent);
+    font-size: 14px;
+    text-align: left;
+  }
 }
 
 .inpText {
-  flex: 1; /* Поле ввода растягивается по ширине */
-  padding: 8px; /* Внутренние отступы поля ввода */
-  max-width: 260px; /* Максимальная ширина текстового поля */
-  border-radius: 5px; /* Скругленные углы у поля ввода */
-  outline: none; /* Убираем стандартную обводку */
-  font-size: 14px; /* Размер шрифта в поле ввода */
+  flex: 1;
+  padding: 8px 16px;
+  height: 36px;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+  font-size: 14px;
+  background-color: #2e2a2a;
+  color: var(--text-light);
+  transition: box-shadow 0.3s ease;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+
+  &::placeholder {
+    color: #aaa;
+    font-style: italic;
+  }
+
+  &:focus {
+    box-shadow: 0 0 5px 2px rgba(225, 177, 145, 0.4);
+  }
 }
 
 .auth-button {
-  box-sizing: border-box; /* Учитываем padding и border в размерах */
+  box-sizing: border-box; // Учитываем padding и border в размерах
   background-color: var(--accent);
-  padding: 0.7rem 2rem;
+  display: inline-block;
+  padding: 1rem 2rem;
   color: var(--text-light);
-  font-size: 1.125rem;
+  font-size: 1.3rem;
   text-decoration: none;
   border-radius: 5px;
-  border: 1px solid transparent; /* Задаём прозрачную границу */
-  transition: background-color 0.3s, border-color 0.3s;
+  border: 1px solid transparent;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+
   &:hover {
-    background-color: var(--accent-dark); /* Меняем цвет фона */
-    border-radius: 5px;
+    background-color: var(--accent-dark);
     border: 1px solid var(--accent);
+    box-shadow: 0 0 8px rgba(225, 177, 145, 0.3);
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(225, 177, 145, 0.4);
   }
 }
-.headerAuth{
-  text-align: center;
-  font-size: 2rem ;
 
+@media (max-width: 480px) {
+  .auth-text {
+    padding: 2rem;
+  }
+
+  .textLog {
+    flex-direction: column;
+    align-items: flex-start;
+
+    label {
+      margin-bottom: 4px;
+    }
+  }
+
+  .inpText {
+    width: 100%;
+  }
 }
-

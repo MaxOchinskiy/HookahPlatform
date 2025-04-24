@@ -9,9 +9,11 @@ function Search({ slice }) {
     const handleSearchChange = (e) => {
         dispatch({ type: `${slice}/setSearchValue`, payload: e.target.value }); // Диспатч для slice
     };
+    const inputRef =React.useRef();
 
     const clearSearch = () => {
-        dispatch({ type: `${slice}/setSearchValue`, payload: "" }); // Очистка значения поиска
+        dispatch({ type: `${slice}/setSearchValue`, payload: "" });
+        inputRef.current.focus()// Очистка значения поиска
     };
 
     return (
@@ -30,6 +32,7 @@ function Search({ slice }) {
                    c-22.7-22.7-35.2-52.9-35.2-85c0-32.1,12.5-62.3,35.2-85c22.7-22.7,52.9-35.2,85-35.2C248.5,96,278.7,108.5,301.4,131.2z"/>
             </svg>
         <input
+            ref={inputRef}
             value={searchValue}
             onChange={handleSearchChange}
             className="search"
