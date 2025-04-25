@@ -1,11 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './StylesNavBar/auth.scss';
 
 function Auth() {
+    const [rememberMe, setRememberMe] = useState(false);
+
     const handleSubmit = (e) => {
         e.preventDefault();
-        // Здесь можно добавить обработку формы
         console.log('Форма отправлена');
+        console.log('Запомнить меня:', rememberMe);
+        // Здесь можно использовать rememberMe для логики хранения токена/логина
     };
 
     return (
@@ -35,6 +38,19 @@ function Auth() {
                             autoComplete="current-password"
                         />
                     </div>
+
+                    <div className="remember-me">
+                        <label className="custom-checkbox">
+                            <input
+                                type="checkbox"
+                                checked={rememberMe}
+                                onChange={() => setRememberMe(!rememberMe)}
+                            />
+                            <span className="checkmark"></span>
+                            Запомнить меня
+                        </label>
+                    </div>
+
 
                     <button type="submit" className="auth-button">Войти/Зарегистрироваться</button>
                 </form>

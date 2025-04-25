@@ -52,8 +52,8 @@ const Tabaco = () => {
                             <div className="content">
                                 <h2>{tabaco.brand}</h2>
                                 <p>Бренды: {tabaco.description}</p>
-                                <p>Линейки крепости: {tabaco.line}</p>
-                                <p>Тип: {tabaco.type}</p>
+                                <p>Крепость: {tabaco.line}</p>
+                                <p>Тип сырья: {tabaco.type}</p>
                                 {tabaco.http && (
                                     <a
                                         href={tabaco.http}
