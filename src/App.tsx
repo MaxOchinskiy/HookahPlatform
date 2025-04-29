@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import  { useEffect } from "react";
+import { useAppDispatch } from "./redux/hooks";
 import { fetchHookahList, fetchTabacoList } from "./redux/slices/dataSlice";
 import { Routes, Route } from "react-router-dom";
 import NavBar from "./component/NavBar";
@@ -14,7 +14,7 @@ import Tabaco from "./component/ComponentsNavBar/Tabaco";
 import Auth from "./component/ComponentsNavBar/auth";
 
 function App() {
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
 
     useEffect(() => {
         // Загружаем оба списка при старте приложения
