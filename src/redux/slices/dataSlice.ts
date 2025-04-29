@@ -8,7 +8,7 @@ export const fetchHookahList = createAsyncThunk<Hookah[]>(
     async (_, { rejectWithValue }) => {
         try {
             const response = await fetch("https://67f4eef9913986b16fa26cac.mockapi.io/hookah");
-            if (!response.ok) throw new Error("Ошибка загрузки кальянных");
+            if (!response.ok)  new Error("Ошибка загрузки кальянных");
             return await response.json();
         } catch (error: any) {
             return rejectWithValue(error.message);
@@ -21,7 +21,7 @@ export const fetchTabacoList = createAsyncThunk<Tabaco[]>(
     async (_, { rejectWithValue }) => {
         try {
             const response = await fetch("https://67f4eef9913986b16fa26cac.mockapi.io/Tabaco");
-            if (!response.ok) throw new Error("Ошибка загрузки табачных смесей");
+            if (!response.ok)  new Error("Ошибка загрузки табачных смесей");
             return await response.json();
         } catch (error: any) {
             return rejectWithValue(error.message);
