@@ -3,6 +3,8 @@ import { Hookah, Tabaco } from './types'; // импортируешь уже о�
 export interface DataState {
     hookahList: Hookah[];
     tabacoList: Tabaco[];
+    loading: boolean;
+    error: string | null;
     requests: {
         hookahList: {
             loading: boolean;

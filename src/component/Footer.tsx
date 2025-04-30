@@ -1,15 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "../component/Footer.scss";
-import logo from "../Image/logo.png";
+import logo from "../Image/logo.png"; // Убедись, что у тебя есть декларации типов для .png
 
-const Footer = React.memo(
-function Footer () {
+const Footer: React.FC = React.memo(() => {
     return (
         <footer className="footer">
             <div className="footer-container">
                 <div className="footer-logo">
-                    <img src={logo} alt="HookahClub Logo" className="footer-logo-img"/>
+                    <img src={logo} alt="HookahClub Logo" className="footer-logo-img" />
                 </div>
                 <ul className="footer-menu">
                     <li><Link to="/aboutUs">О нас</Link></li>
@@ -22,5 +21,3 @@ function Footer () {
 });
 
 export default Footer;
-
-

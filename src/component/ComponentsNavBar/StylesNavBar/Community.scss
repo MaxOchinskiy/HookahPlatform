@@ -111,3 +111,11 @@
 .community-card-image.loaded {
   opacity: 1; /* После загрузки изображение становится полностью видимым */
 }
+.community-card-image {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.community-card-image.loaded {
+  opacity: 1;
+}

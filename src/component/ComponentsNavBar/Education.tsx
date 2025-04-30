@@ -2,11 +2,16 @@ import React, { useState } from "react";
 import "./StylesNavBar/Education.scss";
 
 const Education = () => {
-    const [imagesLoaded, setImagesLoaded] = useState(false);
+    // Создаем состояние для каждого изображения
+    const [imagesLoaded, setImagesLoaded] = useState([false, false, false]);
 
     // Функция для обработки загрузки изображений
-    const handleImageLoad = () => {
-        setImagesLoaded(true);
+    const handleImageLoad = (index: number) => {
+        setImagesLoaded((prev) => {
+            const newImagesLoaded = [...prev];
+            newImagesLoaded[index] = true;
+            return newImagesLoaded;
+        });
     };
 
     return (
@@ -22,8 +27,8 @@ const Education = () => {
                         <img
                             src="https://i.pinimg.com/736x/72/99/de/7299de4b2c54ded865d6b405c8f55e37.jpg"
                             alt="Забивка чаши"
-                            className={`education-card-image ${imagesLoaded ? 'loaded' : ''}`}
-                            onLoad={handleImageLoad}
+                            className={`education-card-image ${imagesLoaded[0] ? 'loaded' : ''}`}
+                            onLoad={() => handleImageLoad(0)}
                             loading="lazy"
                         />
                         <div className="content">
@@ -34,24 +39,24 @@ const Education = () => {
 
                     <div className="education-card">
                         <img
-                                src="https://pp.userapi.com/c830208/v830208340/fa9be/4-yUQLBwo8Q.jpg"
-                                alt="Смешивание вкусов"
-                                className={`education-card-image ${imagesLoaded ? 'loaded' : ''}`}
-                                onLoad={handleImageLoad}
-                                loading="lazy"
-                            />
-                            <div className="content">
-                                <h3>Смешивание вкусов</h3>
-                                <p>Комбинируй табаки и создавай уникальные вкусы.</p>
-                            </div>
+                            src="https://pp.userapi.com/c830208/v830208340/fa9be/4-yUQLBwo8Q.jpg"
+                            alt="Смешивание вкусов"
+                            className={`education-card-image ${imagesLoaded[1] ? 'loaded' : ''}`}
+                            onLoad={() => handleImageLoad(1)}
+                            loading="lazy"
+                        />
+                        <div className="content">
+                            <h3>Смешивание вкусов</h3>
+                            <p>Комбинируй табаки и создавай уникальные вкусы.</p>
+                        </div>
                     </div>
 
                     <div className="education-card">
                         <img
                             src="https://image.kazanexpress.ru/c0cn1b3c559vfk0bu57g/t_product_high.jpg"
                             alt="Работа с углями"
-                            className={`education-card-image ${imagesLoaded ? 'loaded' : ''}`}
-                            onLoad={handleImageLoad}
+                            className={`education-card-image ${imagesLoaded[2] ? 'loaded' : ''}`}
+                            onLoad={() => handleImageLoad(2)}
                             loading="lazy"
                         />
                         <div className="content">
@@ -66,4 +71,3 @@ const Education = () => {
 };
 
 export default Education;
-

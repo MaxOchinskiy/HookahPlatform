@@ -1,19 +1,16 @@
 import React from "react";
 import "./Home.scss";
-import hookahImage from "../Image/fonHome.jpg"; // Фоновое изображение
+import hookahImage from "../Image/fonHome.jpg";
+import {Link} from "react-router-dom";
 
-const Home = () => {
+const Home: React.FC = () => {
     return (
         <section className="home" style={{ backgroundImage: `url(${hookahImage})` }}>
             <div className="home-container">
                 <h1 className="home-title">Добро пожаловать в Hookah Club</h1>
                 <div className="home-buttons">
-                    <a href="/community" className="button join-community">
-                        Присоединиться
-                    </a>
-                    <a href="/hookah-list" className="button book-lounge">
-                        Забронировать кальянную
-                    </a>
+                    <Link to="/community" className="button join-community">Присоединиться</Link>
+                    <Link to="/hookah-list" className="button book-lounge">Забронировать кальянную</Link>
                 </div>
                 <div className="home-description">
                     <h2>О нашем сервисе</h2>

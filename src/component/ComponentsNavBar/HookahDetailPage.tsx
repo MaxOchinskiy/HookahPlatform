@@ -1,14 +1,29 @@
-import React from 'react';
 import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import Slider from 'react-slick';
 import './StylesNavBar/HookahDetailPage.scss';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { RootState } from '../../redux/types'; // Импорт типа RootState
 
+
+interface Hookah {
+    id: string;
+    name: string;
+    description?: string;
+    address?: string;
+    images?: string[];
+    atmosphere?: string;
+    menu?: string[];
+    reviews?: string[];
+    price?: string;
+    contactInfo?: string;
+    imageMap?: string;
+    [key: string]: any;
+}
 
 // Компонент стрелок
-const PrevArrow = ({ onClick }) => (
+const PrevArrow = ({ onClick }: { onClick: () => void }) => (
     <button className="custom-arrow prev" onClick={onClick}>
         <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2">
             <path d="M15 18l-6-6 6-6" />
@@ -16,7 +31,7 @@ const PrevArrow = ({ onClick }) => (
     </button>
 );
 
-const NextArrow = ({ onClick }) => (
+const NextArrow = ({ onClick }: { onClick: () => void }) => (
     <button className="custom-arrow next" onClick={onClick}>
         <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2">
             <path d="M9 6l6 6-6 6" />
@@ -25,14 +40,13 @@ const NextArrow = ({ onClick }) => (
 );
 
 const HookahDetailPage = () => {
-    const { id } = useParams();
-    const { hookahList, loading, error } = useSelector((state) => state.data); // Данные из Redux
+    const { id } = useParams<{ id: string }>();
+    const { hookahList, loading, error } = useSelector((state: RootState) => state.data); // Тип RootState
 
     if (loading) return <p>Загрузка...</p>;
     if (error) return <p className="error">{error}</p>;
 
-    // Находим кальянную по ID
-    const bar = hookahList.find((bar) => bar.id.toString() === id);
+    const bar = hookahList.find((bar: Hookah) => bar.id.toString() === id);
 
     if (!bar) {
         return <p>Кальянная не найдена</p>;
@@ -45,8 +59,8 @@ const HookahDetailPage = () => {
         slidesToShow: 1,
         slidesToScroll: 1,
         arrows: true,
-        prevArrow: <PrevArrow />,
-        nextArrow: <NextArrow />,
+        prevArrow: <PrevArrow onClick={() => {}} />,
+        nextArrow: <NextArrow onClick={() => {}} />,
     };
 
     return (
@@ -62,7 +76,7 @@ const HookahDetailPage = () => {
             <div className="section">
                 <h2>Меню и услуги</h2>
                 <ul>
-                    {bar.menu.map((item, index) => (
+                    {bar.menu?.map((item: string, index: number) => (
                         <li key={index}>{item}</li>
                     ))}
                 </ul>
@@ -71,7 +85,7 @@ const HookahDetailPage = () => {
             <div className="section">
                 <h2>Отзывы</h2>
                 <ul>
-                    {bar.reviews.map((review, index) => (
+                    {bar.reviews?.map((review: string, index: number) => (
                         <li key={index}>{review}</li>
                     ))}
                 </ul>
@@ -81,7 +95,7 @@ const HookahDetailPage = () => {
                 <h2>Фотогалерея</h2>
                 <div className="gallery">
                     <Slider {...sliderSettings}>
-                        {bar.images.map((image, index) => (
+                        {bar.images?.map((image: string, index: number) => (
                             <div key={index} className="image-wrapper">
                                 <div className="image-container">
                                     <img src={image} alt={`Фото ${index + 1}`} className="img"/>
@@ -118,9 +132,6 @@ const HookahDetailPage = () => {
             </div>
 
             <div className="map">
-                <a href={bar.nameUrl} className="name"> </a>
-                <a href={bar.bio} className="bio"> </a>
-                <a href={bar.info} className="info"> </a>
                 <iframe
                     src={bar.imageMap}
                     className="frame1"

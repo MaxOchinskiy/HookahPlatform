@@ -1,20 +1,21 @@
-import React, {useState} from "react";
-import {Link} from "react-router-dom";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import "./ComponentsNavBar/StylesNavBar/NavBar.scss";
 
-const NavBar= React.memo(
-function NavBar (){
+const NavBar: React.FC = React.memo(() => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
     };
+
     return (
         <nav className="navbar">
             <div className="navbar-container">
                 <Link to="/" className="navbar-logo">
                     Hookah<span>Club</span>
                 </Link>
-                <ul className={`navbar-menu ${isMenuOpen ? 'active' : ''}`}>
+                <ul className={`navbar-menu ${isMenuOpen ? "active" : ""}`}>
                     <li>
                         <Link to="/hookah-list">Кальянные</Link>
                     </li>
@@ -39,11 +40,6 @@ function NavBar (){
             </div>
         </nav>
     );
-})
+});
 
 export default NavBar;
-
-
-
-
-

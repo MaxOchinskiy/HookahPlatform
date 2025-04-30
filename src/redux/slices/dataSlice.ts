@@ -32,6 +32,8 @@ export const fetchTabacoList = createAsyncThunk<Tabaco[]>(
 // Начальное состояние с типами
 const initialState: DataState = {
     hookahList: [],
+    loading: false,
+    error: null,
     tabacoList: [],
     requests: {
         hookahList: { loading: false, error: null },

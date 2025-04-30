@@ -58,6 +58,7 @@
     ]
   },
   "devDependencies": {
+    "@types/react-slick": "^0.23.13",
     "ajv": "^7.2.4"
   }
 }

@@ -3,12 +3,23 @@ import './StylesNavBar/auth.scss';
 
 function Auth() {
     const [rememberMe, setRememberMe] = useState(false);
+    const [login, setLogin] = useState('');
+    const [password, setPassword] = useState('');
+    const [showPassword, setShowPassword] = useState(false);
 
-    const handleSubmit = (e) => {
+    const handleLoginChange = (e: React.ChangeEvent<HTMLInputElement>) => setLogin(e.target.value);
+    const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value);
+
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+        if (!login || !password) {
+            alert('Пожалуйста, заполните все поля!');
+            return;
+        }
         console.log('Форма отправлена');
+        console.log('Логин:', login);
+        console.log('Пароль:', password);
         console.log('Запомнить меня:', rememberMe);
-        // Здесь можно использовать rememberMe для логики хранения токена/логина
     };
 
     return (
@@ -25,18 +36,32 @@ function Auth() {
                             className="inpText"
                             placeholder="Введите логин/email"
                             autoComplete="username"
+                            value={login}
+                            onChange={handleLoginChange}
                         />
                     </div>
 
                     <div className="textLog">
                         <label htmlFor="password">Пароль</label>
-                        <input
-                            type="password"
-                            id="password"
-                            className="inpText"
-                            placeholder="Введите пароль"
-                            autoComplete="current-password"
-                        />
+                        <div className="password-container">
+                            <input
+                                type={showPassword ? 'text' : 'password'}
+                                id="password"
+                                className="inpText"
+                                placeholder="Введите пароль"
+                                autoComplete="current-password"
+                                value={password}
+                                onChange={handlePasswordChange}
+                            />
+                            <button
+                                type="button"
+                                className="password-toggle"
+                                onClick={() => setShowPassword(!showPassword)}
+                                aria-label={showPassword ? 'Скрыть пароль' : 'Показать пароль'}
+                            >
+                                {showPassword ? '🙈' : '👁️'}
+                            </button>
+                        </div>
                     </div>
 
                     <div className="remember-me">
@@ -50,7 +75,6 @@ function Auth() {
                             Запомнить меня
                         </label>
                     </div>
-
 
                     <button type="submit" className="auth-button">Войти/Зарегистрироваться</button>
                 </form>

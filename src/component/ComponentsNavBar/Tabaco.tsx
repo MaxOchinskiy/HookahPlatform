@@ -1,23 +1,32 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import type { RootState } from '../../redux/store'; // предполагаем, что у тебя есть файл store.ts с типом RootState
 import { setSortOrder } from '../../redux/slices/tabacoSlice';
 import Search from './Search/Search';
 import './StylesNavBar/Tobaco.scss';
 
-const Tabaco = () => {
+interface TabacoItem {
+    id: string;
+    brand: string;
+    description: string;
+    line: string; // Крепость
+    type: string; // Тип сырья
+    image: string;
+    http?: string;
+}
+
+const Tabaco: React.FC = () => {
     const dispatch = useDispatch();
-    const { tabacoList, loading, error } = useSelector((state) => state.data); // Данные из Redux
-    const { searchValue, sortOrder } = useSelector((state) => state.tabaco); // Поиск и сортировка
+    const { tabacoList, loading, error } = useSelector((state: RootState) => state.data);
+    const { searchValue, sortOrder } = useSelector((state: RootState) => state.tabaco);
 
     if (loading) return <p>Загрузка...</p>;
     if (error) return <p className="error">{error}</p>;
 
-    // Фильтрация табачных смесей
-    const filteredTabacos = tabacoList.filter((tabaco) =>
+    const filteredTabacos = tabacoList.filter((tabaco: TabacoItem) =>
         tabaco.brand.toLowerCase().includes(searchValue.toLowerCase())
     );
 
-    // Сортировка табачных смесей
     const sortedTabacos = filteredTabacos.sort((a, b) =>
         sortOrder === 'asc' ? a.brand.localeCompare(b.brand) : b.brand.localeCompare(a.brand)
     );
@@ -35,7 +44,7 @@ const Tabaco = () => {
                         <select
                             id="sortOrder"
                             value={sortOrder}
-                            onChange={(e) => dispatch(setSortOrder(e.target.value))}
+                            onChange={(e) => dispatch(setSortOrder(e.target.value as 'asc' | 'desc'))}
                         >
                             <option value="asc">По названию (А-Я)</option>
                             <option value="desc">По названию (Я-А)</option>
@@ -46,7 +55,7 @@ const Tabaco = () => {
 
             <ul className="tabaco-list">
                 {sortedTabacos.length > 0 ? (
-                    sortedTabacos.map((tabaco) => (
+                    sortedTabacos.map((tabaco: TabacoItem) => (
                         <li key={tabaco.id} className="tabaco-item">
                             <img src={tabaco.image} alt={tabaco.brand} />
                             <div className="content">
