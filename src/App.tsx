@@ -12,6 +12,7 @@ import AboutUs from "./component/ComponentsNavBar/AboutUs";
 import HookahDetailPage from "./component/ComponentsNavBar/HookahDetailPage";
 import Tabaco from "./component/ComponentsNavBar/Tabaco";
 import Auth from "./component/ComponentsNavBar/auth";
+import PackingMethodsPage from "./component/ComponentsNavBar/PackingMethodsPage";
 
 function App() {
     const dispatch = useAppDispatch();
@@ -31,6 +32,7 @@ function App() {
                     <Route path="/hookah-list" element={<HookahList />} />
                     <Route path="/hookah/:id" element={<HookahDetailPage />} />
                     <Route path="/education" element={<Education />} />
+                    <Route path="/education/packing" element={<PackingMethodsPage />} />
                     <Route path="/tabaco" element={<Tabaco />} />
                     <Route path="/community" element={<Community />} />
                     <Route path="/aboutUs" element={<AboutUs />} />

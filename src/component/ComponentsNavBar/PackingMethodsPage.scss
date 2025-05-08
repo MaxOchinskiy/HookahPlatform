@@ -1,0 +1,93 @@
+.packing-page {
+  background-color: #18181b; // zinc-900
+  min-height: 100vh;
+  color: #ffffff;
+  padding: 1.5rem;
+
+
+  h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+
+  .separator {
+    height: 1px;
+    background-color: #3f3f46; // zinc-700
+    margin-bottom: 1.5rem;
+  }
+
+  .methods-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+
+    @media (min-width: 640px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (min-width: 1024px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .method-card {
+    background-color: #27272a; // zinc-800
+    border: 1px solid #3f3f46;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+
+    &:hover {
+      background-color: #303035;
+      transform: translateY(-2px);
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+
+      h2 {
+        font-size: 1.25rem;
+        font-weight: 600;
+      }
+
+      svg {
+        width: 1.25rem;
+        height: 1.25rem;
+      }
+    }
+
+    ul {
+      margin-top: 0.5rem;
+      list-style: disc;
+      padding-left: 1.25rem;
+      color: #d4d4d8; // zinc-300
+
+      li {
+        font-size: 0.875rem;
+        margin-bottom: 0.25rem;
+      }
+    }
+  }
+}
+
+// Иконки
+.icon {
+  width: 24px;
+  height: 24px;
+  stroke-width: 2;
+  stroke: currentColor;
+  transition: color 0.3s ease;
+
+  &.text-pink    { color: #ff4d88; }
+  &.text-green   { color: #4caf50; }
+  &.text-teal    { color: #1de9b6; }
+  &.text-orange  { color: #ffa726; }
+  &.text-blue    { color: #42a5f5; }
+  &.text-yellow  { color: #facc15; }
+  &.text-red     { color: #ef4444; }
+  &.text-emerald{ color: rgb(87, 13, 147); }
+}

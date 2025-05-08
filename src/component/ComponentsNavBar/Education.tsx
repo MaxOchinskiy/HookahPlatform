@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import "./StylesNavBar/Education.scss";
+import PackingMethodsPage from "./PackingMethodsPage";
+import { useNavigate } from "react-router-dom";
+
 
 const Education = () => {
     // Создаем состояние для каждого изображения
@@ -13,6 +16,8 @@ const Education = () => {
             return newImagesLoaded;
         });
     };
+    const navigate = useNavigate();
+
 
     return (
         <section className="education-section">
@@ -25,6 +30,7 @@ const Education = () => {
                 <div className="education-grid">
                     <div className="education-card">
                         <img
+                            onClick={() => navigate("/education/packing")}
                             src="https://i.pinimg.com/736x/72/99/de/7299de4b2c54ded865d6b405c8f55e37.jpg"
                             alt="Забивка чаши"
                             className={`education-card-image ${imagesLoaded[0] ? 'loaded' : ''}`}
