@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "./StylesNavBar/Education.scss";
-import PackingMethodsPage from "./PackingMethodsPage";
 import { useNavigate } from "react-router-dom";
 
 
@@ -21,16 +20,15 @@ const Education = () => {
 
     return (
         <section className="education-section">
+
             <div className="container">
                 <h2 className="education-title">Обучение</h2>
                 <p className="education-text">
                     Изучай новые техники, учись правильно забивать чашу и подбирать вкусы.
                 </p>
-
                 <div className="education-grid">
-                    <div className="education-card">
+                    <div className="education-card" onClick={() => navigate("/education/packing")}>
                         <img
-                            onClick={() => navigate("/education/packing")}
                             src="https://i.pinimg.com/736x/72/99/de/7299de4b2c54ded865d6b405c8f55e37.jpg"
                             alt="Забивка чаши"
                             className={`education-card-image ${imagesLoaded[0] ? 'loaded' : ''}`}

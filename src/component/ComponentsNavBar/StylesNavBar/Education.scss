@@ -8,6 +8,8 @@
   background-repeat: no-repeat;
   text-align: center;
   color: var(--text-light);
+  cursor:default;
+
 
   .container {
     max-width:1000px ;
@@ -17,6 +19,7 @@
     border-radius: 8px;
     box-shadow: var(--shadow);
     color: var(--text-light);
+
   }
 
   .education-title {
@@ -51,6 +54,7 @@
     transition: transform 0.3s, box-shadow 0.3s, opacity 0.3s;
     opacity: 0;
     animation: fadeIn 0.5s forwards;
+    cursor: pointer;
 
     &:hover {
       transform: scale(1.05);
