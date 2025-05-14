@@ -1,6 +1,6 @@
 import React from "react";
 import "./PackingMethodsPage.scss";
-import { Flame, Layers, CircleDot, Target, Zap } from "lucide-react";
+import {Flame, Layers, CircleDot, Target, Zap, AlignJustify} from "lucide-react";
 
 const methods = [
     {
@@ -94,7 +94,7 @@ const methods = [
     },
     {
         title: "Забивка слоями",
-        icon: <Layers className="icon text-emerald" />,
+        icon: <AlignJustify className="icon text-emerald" />,
         description: [
             "Описание: Метод заключается в укладке табака в чашу по слоям, где каждый слой может быть разной плотности или составом. Обычно этот метод используется для создания сбалансированного вкуса и хорошей тяги.",
             "Плюсы: Позволяет контролировать крепость и вкус.\n" +

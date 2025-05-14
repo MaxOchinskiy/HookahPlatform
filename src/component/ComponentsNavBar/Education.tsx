@@ -41,7 +41,7 @@ const Education = () => {
                         </div>
                     </div>
 
-                    <div className="education-card">
+                    <div className="education-card" onClick={() => navigate("/education/mix")}>
                         <img
                             src="https://pp.userapi.com/c830208/v830208340/fa9be/4-yUQLBwo8Q.jpg"
                             alt="Смешивание вкусов"
