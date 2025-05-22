@@ -55,7 +55,7 @@ const Education = () => {
                         </div>
                     </div>
 
-                    <div className="education-card">
+                    <div className="education-card" onClick={() => navigate("/education/coal")}>
                         <img
                             src="https://image.kazanexpress.ru/c0cn1b3c559vfk0bu57g/t_product_high.jpg"
                             alt="Работа с углями"

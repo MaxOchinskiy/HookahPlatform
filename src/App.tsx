@@ -14,6 +14,7 @@ import Tabaco from "./component/ComponentsNavBar/Tabaco";
 import Auth from "./component/ComponentsNavBar/auth";
 import PackingMethodsPage from "./component/ComponentsNavBar/PackingMethodsPage";
 import MixFlavored from "./component/ComponentsNavBar/MixFlavored";
+import WorkCoal from "./component/ComponentsNavBar/WorkCoal";
 
 function App() {
     const dispatch = useAppDispatch();
@@ -35,6 +36,7 @@ function App() {
                     <Route path="/education" element={<Education />} />
                     <Route path="/education/packing" element={<PackingMethodsPage />} />
                     <Route path="/education/mix" element={<MixFlavored />} />
+                    <Route path="/education/coal" element={<WorkCoal />} />
                     <Route path="/tabaco" element={<Tabaco />} />
                     <Route path="/community" element={<Community />} />
                     <Route path="/aboutUs" element={<AboutUs />} />
