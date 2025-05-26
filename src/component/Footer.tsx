@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "../component/Footer.scss";
-import logo from "../Image/logo.png"; // Убедись, что у тебя есть декларации типов для .png
+import logo from "../Image/logo.png";
 
 const Footer: React.FC = React.memo(() => {
     return (
