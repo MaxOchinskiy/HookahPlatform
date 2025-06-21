@@ -1,45 +1,103 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { NavLink, useLocation } from "react-router-dom";
+import { 
+    MapPin, 
+    Users, 
+    BookOpen, 
+    Coffee, 
+    LogIn, 
+    Menu, 
+    X,
+    Home
+} from 'lucide-react';
 import "./ComponentsNavBar/StylesNavBar/NavBar.scss";
+import logo from '../Image/logo.png';
 
-const NavBar: React.FC = React.memo(() => {
+const navLinks = [
+    { name: 'Главная', path: '/', icon: <Home /> },
+    { name: 'Кальянные', path: '/hookahs', icon: <MapPin /> },
+    { name: 'Сообщество', path: '/community', icon: <Users /> },
+    { name: 'Обучение', path: '/education', icon: <BookOpen /> },
+    { name: 'Табаки', path: '/tobacco', icon: <Coffee /> },
+];
+
+const NavBar: React.FC = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const location = useLocation();
 
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
     };
 
+    const closeMenu = () => {
+        setIsMenuOpen(false);
+    };
+
+    useEffect(() => {
+        if (isMenuOpen) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'auto';
+        }
+        return () => {
+            document.body.style.overflow = 'auto';
+        };
+    }, [isMenuOpen]);
+
+    useEffect(() => {
+        closeMenu();
+    }, [location]);
+
     return (
-        <nav className="navbar">
-            <div className="navbar-container">
-                <Link to="/" className="navbar-logo">
-                    Hookah<span>Club</span>
-                </Link>
-                <ul className={`navbar-menu ${isMenuOpen ? "active" : ""}`}>
-                    <li>
-                        <Link to="/hookah-list">Кальянные</Link>
-                    </li>
-                    <li>
-                        <Link to="/community">Сообщество</Link>
-                    </li>
-                    <li>
-                        <Link to="/education">Обучение</Link>
-                    </li>
-                    <li>
-                        <Link to="/tabaco">Табаки</Link>
-                    </li>
-                </ul>
-                <Link to="/auth" className="navbar-auth-button">
-                    Войти
-                </Link>
-                <div className="navbar-hamburger" onClick={toggleMenu}>
-                    <span className="bar"></span>
-                    <span className="bar"></span>
-                    <span className="bar"></span>
+        <>
+            <div className={`navbar-overlay ${isMenuOpen ? 'active' : ''}`} onClick={closeMenu}></div>
+            <nav className="navbar">
+                <NavLink to="/" className="navbar-logo">
+                    <img src={logo} alt="HookahClub Logo" />
+                    <h1>HookahClub</h1>
+                </NavLink>
+
+                <div className="navbar-links-desktop">
+                    {navLinks.map((link) => (
+                        <NavLink key={link.name} to={link.path} className="navbar-link">
+                            {link.icon}
+                            <span>{link.name}</span>
+                        </NavLink>
+                    ))}
                 </div>
+
+                <div className="navbar-actions">
+                    <button className="navbar-auth-button">
+                        <LogIn />
+                        <span>Войти</span>
+                    </button>
+                    <button className="navbar-menu-toggle" onClick={toggleMenu}>
+                        <Menu />
+                    </button>
+                </div>
+            </nav>
+
+            <div className={`navbar-menu ${isMenuOpen ? 'active' : ''}`}>
+                <div className="navbar-menu-header">
+                    <button className="navbar-close-button" onClick={closeMenu}>
+                        <X />
+                    </button>
+                </div>
+
+                {navLinks.map((link) => (
+                    <NavLink key={link.name} to={link.path} className="navbar-menu-link" onClick={closeMenu}>
+                        {link.icon}
+                        <span>{link.name}</span>
+                    </NavLink>
+                ))}
+
+                <button className="navbar-auth-button-mobile">
+                    <LogIn />
+                    <span>Войти</span>
+                </button>
             </div>
-        </nav>
+        </>
     );
-});
+};
 
 export default NavBar;

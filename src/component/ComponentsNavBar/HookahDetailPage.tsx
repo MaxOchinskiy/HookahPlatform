@@ -1,142 +1,204 @@
+import React from 'react';
 import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import Slider from 'react-slick';
-import './StylesNavBar/HookahDetailPage.scss';
-import "slick-carousel/slick/slick.css";
+import { 
+    MapPin, 
+    Clock, 
+    Star, 
+    Heart, 
+    Share2, 
+    Music, 
+    Coffee, 
+    MessageCircle, 
+    ChevronLeft, 
+    ChevronRight,
+    Camera,
+    Info,
+    CalendarCheck2
+} from 'lucide-react';
+import ImageWithFallback from '../ImageWithFallback';
+import LoadingSpinner from '../LoadingSpinner';
+import { RootState, Hookah, Review } from '../../redux/types';
+import "./StylesNavBar/HookahDetailPage.scss";
+import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
-import { RootState } from '../../redux/types'; // Импорт типа RootState
 
-
-interface Hookah {
-    id: string;
-    name: string;
-    description?: string;
-    address?: string;
-    images?: string[];
-    atmosphere?: string;
-    menu?: string[];
-    reviews?: string[];
-    price?: string;
-    contactInfo?: string;
-    imageMap?: string;
-    [key: string]: any;
-}
-
-// Компонент стрелок
-const PrevArrow = ({ onClick }: { onClick: () => void }) => (
+const PrevArrow: React.FC<{ onClick?: () => void }> = ({ onClick }) => (
     <button className="custom-arrow prev" onClick={onClick}>
-        <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2">
-            <path d="M15 18l-6-6 6-6" />
-        </svg>
+        <ChevronLeft size={24} />
     </button>
 );
 
-const NextArrow = ({ onClick }: { onClick: () => void }) => (
+const NextArrow: React.FC<{ onClick?: () => void }> = ({ onClick }) => (
     <button className="custom-arrow next" onClick={onClick}>
-        <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2">
-            <path d="M9 6l6 6-6 6" />
-        </svg>
+        <ChevronRight size={24} />
     </button>
 );
 
-const HookahDetailPage = () => {
+const HookahDetailPage: React.FC = () => {
     const { id } = useParams<{ id: string }>();
-    const { hookahList, loading, error } = useSelector((state: RootState) => state.data); // Тип RootState
+    const { hookahList, loading, error } = useSelector((state: RootState) => state.data);
 
-    if (loading) return <p>Загрузка...</p>;
-    if (error) return <p className="error">{error}</p>;
+    if (loading) return <LoadingSpinner size="large" text="Загрузка информации о кальянной..." />;
+    if (error) return <p className="error-message">{error}</p>;
 
-    const bar = hookahList.find((bar: Hookah) => bar.id.toString() === id);
+    const bar = hookahList.find((b: Hookah) => b.id.toString() === id);
 
     if (!bar) {
-        return <p>Кальянная не найдена</p>;
+        return (
+            <div className="not-found-container">
+                <MapPin className="not-found-icon" />
+                <h2>Кальянная не найдена</h2>
+                <p>К сожалению, мы не смогли найти информацию по вашему запросу.</p>
+            </div>
+        );
     }
 
     const sliderSettings = {
-        dots: false,
+        dots: true,
         infinite: true,
         speed: 500,
         slidesToShow: 1,
         slidesToScroll: 1,
         arrows: true,
-        prevArrow: <PrevArrow onClick={() => {}} />,
-        nextArrow: <NextArrow onClick={() => {}} />,
+        prevArrow: <PrevArrow />,
+        nextArrow: <NextArrow />,
+        autoplay: true,
+        autoplaySpeed: 5000,
+        pauseOnHover: true,
     };
 
     return (
-        <section className="hookah-detail">
-            <h1>{bar.name}</h1>
-            <p>{bar.description}</p>
-
-            <div className="section">
-                <h2>Атмосфера и интерьер</h2>
-                <p>{bar.atmosphere}</p>
-            </div>
-
-            <div className="section">
-                <h2>Меню и услуги</h2>
-                <ul>
-                    {bar.menu?.map((item: string, index: number) => (
-                        <li key={index}>{item}</li>
-                    ))}
-                </ul>
-            </div>
-
-            <div className="section">
-                <h2>Отзывы</h2>
-                <ul>
-                    {bar.reviews?.map((review: string, index: number) => (
-                        <li key={index}>{review}</li>
-                    ))}
-                </ul>
-            </div>
-
-            <div className="section">
-                <h2>Фотогалерея</h2>
-                <div className="gallery">
-                    <Slider {...sliderSettings}>
-                        {bar.images?.map((image: string, index: number) => (
-                            <div key={index} className="image-wrapper">
-                                <div className="image-container">
-                                    <img src={image} alt={`Фото ${index + 1}`} className="img"/>
-                                </div>
-                            </div>
-                        ))}
-                    </Slider>
+        <section className="hookah-detail-page">
+            <div className="hookah-detail-container">
+                <div className="detail-header-card">
+                    <div className="header-content">
+                        <h1 className="header-title">{bar.name}</h1>
+                        <p className="header-description">{bar.description}</p>
+                        <div className="header-meta">
+                            <span className="meta-item">
+                                <MapPin className="meta-icon" /> {bar.address}
+                            </span>
+                            <span className="meta-item">
+                                <Clock className="meta-icon" /> {bar.workingHours || 'Часы работы не указаны'}
+                            </span>
+                            <span className="meta-item">
+                                <Star className="meta-icon filled" /> {bar.rating || 'Нет оценок'} ({bar.reviews?.length || 0} отзывов)
+                            </span>
+                        </div>
+                        <div className="header-actions">
+                            {bar.imageMap && (
+                                <a href={bar.imageMap} className="btn-action book" target="_blank" rel="noopener noreferrer">
+                                    <CalendarCheck2 className="btn-icon" />
+                                    Забронировать
+                                </a>
+                            )}
+                            <button className="btn-action favorite">
+                                <Heart className="btn-icon" />
+                                В избранное
+                            </button>
+                            <button className="btn-action share">
+                                <Share2 className="btn-icon" />
+                            </button>
+                        </div>
+                    </div>
+                    {bar.images && bar.images.length > 0 && (
+                        <div className="header-image-container">
+                            <ImageWithFallback src={bar.images[0]} alt={bar.name} className="header-image"/>
+                        </div>
+                    )}
                 </div>
-            </div>
 
-            <div className="section">
-                <h2>Цены</h2>
-                <p>{bar.price}</p>
-            </div>
+                <div className="detail-content-grid">
+                    <div className="info-card">
+                        <div className="card-header">
+                            <Camera className="card-icon" />
+                            <h2 className="card-title">Фотогалерея</h2>
+                        </div>
+                        {bar.images && bar.images.length > 0 ? (
+                            <Slider {...sliderSettings} className="gallery-slider">
+                                {bar.images.map((image: string, index: number) => (
+                                    <div key={index} className="slide-image-container">
+                                        <ImageWithFallback src={image} alt={`Фото ${index + 1}`} className="slide-image" />
+                                    </div>
+                                ))}
+                            </Slider>
+                        ) : (
+                            <p className="card-body">Нет доступных фото.</p>
+                        )}
+                    </div>
 
-            <div className="section">
-                <h2>Бронирование</h2>
-                {bar.imageMap ? (
-                    <p>
-                        Проверьте доступные столы для бронирования{' '}
-                        <a href={bar.imageMap} target="_blank" rel="noopener noreferrer">
-                            здесь
-                        </a>.
-                    </p>
-                ) : (
-                    <p>Бронирование не доступно</p>
-                )}
-            </div>
+                    <div className="info-card">
+                        <div className="card-header">
+                            <Music className="card-icon" />
+                            <h2 className="card-title">Атмосфера и интерьер</h2>
+                        </div>
+                        <p className="card-body">{bar.atmosphere || 'Описание отсутствует.'}</p>
+                    </div>
 
-            <div className="section">
-                <h2>Контактная информация</h2>
-                <p>{bar.contactInfo}</p>
-                <p>{bar.address}</p>
-            </div>
+                    <div className="info-card">
+                        <div className="card-header">
+                            <Coffee className="card-icon" />
+                            <h2 className="card-title">Меню и услуги</h2>
+                        </div>
+                        <ul className="card-list">
+                            {bar.menu && bar.menu.length > 0 ? (
+                                bar.menu.map((item: string, index: number) => (
+                                    <li key={index}>{item}</li>
+                                ))
+                            ) : (
+                                <li className='empty'>Информация о меню отсутствует.</li>
+                            )}
+                        </ul>
+                    </div>
 
-            <div className="map">
-                <iframe
-                    src={bar.imageMap}
-                    className="frame1"
-                    title="Map"
-                ></iframe>
+                    <div className="info-card">
+                        <div className="card-header">
+                            <MessageCircle className="card-icon" />
+                            <h2 className="card-title">Отзывы</h2>
+                        </div>
+                        <div className="card-body reviews">
+                            {bar.reviews && bar.reviews.length > 0 ? (
+                                bar.reviews.map((review: Review, index: number) => (
+                                    <div key={index} className="review">
+                                        <div className="review-header">
+                                            <strong>{review.author}</strong>
+                                            <div className="review-rating">
+                                                {[...Array(5)].map((_, i) => (
+                                                    <Star key={i} className={`star-icon ${i < review.rating ? 'filled' : ''}`} />
+                                                ))}
+                                            </div>
+                                        </div>
+                                        <p className="review-comment">"{review.comment}"</p>
+                                    </div>
+                                ))
+                            ) : (
+                                <p>Отзывов пока нет.</p>
+                            )}
+                        </div>
+                    </div>
+
+                    {bar.imageMap && (
+                        <div className="info-card map-card">
+                            <div className="card-header">
+                                <Info className="card-icon" />
+                                <h2 className="card-title">Мы на карте</h2>
+                            </div>
+                            <div className="map-container">
+                                <iframe
+                                    src={bar.imageMap}
+                                    width="100%"
+                                    height="400"
+                                    style={{ border: 0, borderRadius: 'var(--radius)' }}
+                                    allowFullScreen={true}
+                                    loading="lazy"
+                                    title={`Карта ${bar.name}`}
+                                ></iframe>
+                            </div>
+                        </div>
+                    )}
+                </div>
             </div>
         </section>
     );

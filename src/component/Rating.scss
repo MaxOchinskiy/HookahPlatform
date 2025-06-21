@@ -1,0 +1,73 @@
+.rating {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    .stars {
+        display: flex;
+        gap: 0.125rem;
+    }
+
+    .star {
+        transition: all var(--transition-duration) var(--transition-ease);
+
+        &.small {
+            width: 16px;
+            height: 16px;
+        }
+
+        &.medium {
+            width: 20px;
+            height: 20px;
+        }
+
+        &.large {
+            width: 24px;
+            height: 24px;
+        }
+
+        &.filled {
+            fill: #ffd700;
+            color: #ffd700;
+        }
+
+        &.half-filled {
+            fill: url(#half-star);
+            color: #ffd700;
+        }
+
+        &.empty {
+            fill: none;
+            color: var(--text-muted);
+        }
+
+        &.clickable {
+            cursor: pointer;
+
+            &:hover {
+                transform: scale(1.1);
+                color: #ffd700;
+            }
+        }
+    }
+
+    .rating-number {
+        color: var(--text-light);
+        font-weight: 600;
+        font-family: var(--font-main);
+    }
+}
+
+// Градиент для полузаполненных звезд
+svg {
+    defs {
+        linearGradient#half-star {
+            stop:first-child {
+                stop-color: #ffd700;
+            }
+            stop:last-child {
+                stop-color: var(--text-muted);
+            }
+        }
+    }
+} 

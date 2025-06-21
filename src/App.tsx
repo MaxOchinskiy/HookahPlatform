@@ -10,11 +10,13 @@ import Education from "./component/ComponentsNavBar/Education";
 import Community from "./component/ComponentsNavBar/Comunity";
 import AboutUs from "./component/ComponentsNavBar/AboutUs";
 import HookahDetailPage from "./component/ComponentsNavBar/HookahDetailPage";
-import Tabaco from "./component/ComponentsNavBar/Tabaco";
+import TabacoPage from "./component/ComponentsNavBar/Tabaco";
 import Auth from "./component/ComponentsNavBar/auth";
 import PackingMethodsPage from "./component/ComponentsNavBar/PackingMethodsPage";
 import MixFlavored from "./component/ComponentsNavBar/MixFlavored";
 import WorkCoal from "./component/ComponentsNavBar/WorkCoal";
+import ErrorBoundary from "./component/ErrorBoundary";
+import "./App.scss";
 
 function App() {
     const dispatch = useAppDispatch();
@@ -26,25 +28,27 @@ function App() {
     }, [dispatch]);
 
     return (
-        <div className="layout">
-            <NavBar />
-            <main className="main-content">
-                <Routes>
-                    <Route path="/" element={<Home />} />
-                    <Route path="/hookah-list" element={<HookahList />} />
-                    <Route path="/hookah/:id" element={<HookahDetailPage />} />
-                    <Route path="/education" element={<Education />} />
-                    <Route path="/education/packing" element={<PackingMethodsPage />} />
-                    <Route path="/education/mix" element={<MixFlavored />} />
-                    <Route path="/education/coal" element={<WorkCoal />} />
-                    <Route path="/tabaco" element={<Tabaco />} />
-                    <Route path="/community" element={<Community />} />
-                    <Route path="/aboutUs" element={<AboutUs />} />
-                    <Route path="/auth" element={<Auth/>} />
-                </Routes>
-            </main>
-            <Footer />
-        </div>
+        <ErrorBoundary>
+            <div className="layout">
+                <NavBar />
+                <main className="main-content">
+                    <Routes>
+                        <Route path="/" element={<Home />} />
+                        <Route path="/hookah-list" element={<HookahList />} />
+                        <Route path="/hookah/:id" element={<HookahDetailPage />} />
+                        <Route path="/education" element={<Education />} />
+                        <Route path="/education/packing" element={<PackingMethodsPage />} />
+                        <Route path="/education/mix" element={<MixFlavored />} />
+                        <Route path="/education/coal" element={<WorkCoal />} />
+                        <Route path="/tabaco" element={<TabacoPage />} />
+                        <Route path="/community" element={<Community />} />
+                        <Route path="/aboutUs" element={<AboutUs />} />
+                        <Route path="/auth" element={<Auth/>} />
+                    </Routes>
+                </main>
+                <Footer />
+            </div>
+        </ErrorBoundary>
     );
 }
 

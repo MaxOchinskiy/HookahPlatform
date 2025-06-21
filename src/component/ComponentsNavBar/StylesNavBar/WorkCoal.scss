@@ -1,0 +1,347 @@
+@use '../../../variables';
+
+.work-coal {
+  min-height: 100vh;
+  background: linear-gradient(135deg, var(--bg-dark) 0%, #1a1a1a 100%);
+  padding: 2rem 1rem;
+  animation: fadeInWorkCoal 0.8s ease;
+
+  .work-coal-container {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .work-coal-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding: 2rem;
+    background: rgba(228, 167, 136, 0.1);
+    border-radius: var(--radius);
+    border: 1px solid rgba(228, 167, 136, 0.2);
+
+    .work-coal-title {
+      font-size: 2.5rem;
+      color: var(--accent);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+
+      .title-icon {
+        width: 2.5rem;
+        height: 2.5rem;
+        color: var(--accent);
+      }
+    }
+
+    .work-coal-subtitle {
+      font-size: 1.2rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+  }
+
+  .work-coal-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .work-coal-section {
+    background: var(--bg-card);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    }
+
+    &.expanded {
+      border-color: rgba(228, 167, 136, 0.3);
+    }
+
+    .work-coal-section-header {
+      padding: 1.5rem;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: linear-gradient(90deg, rgba(228, 167, 136, 0.1) 0%, transparent 100%);
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background: linear-gradient(90deg, rgba(228, 167, 136, 0.15) 0%, transparent 100%);
+      }
+
+      .section-title-wrapper {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+
+        .section-icon {
+          width: 1.5rem;
+          height: 1.5rem;
+          color: var(--accent);
+          flex-shrink: 0;
+        }
+
+        .section-title {
+          font-size: 1.3rem;
+          color: var(--text-light);
+          margin: 0;
+          font-weight: 600;
+        }
+      }
+
+      .section-toggle {
+        .toggle-icon {
+          width: 1.5rem;
+          height: 1.5rem;
+          color: var(--accent);
+          transition: transform 0.3s ease;
+        }
+      }
+    }
+
+    .work-coal-section-content {
+      padding: 0 1.5rem 1.5rem;
+      animation: slideDown 0.3s ease;
+
+      .description-block,
+      .tips-block,
+      .warnings-block {
+        margin-bottom: 1.5rem;
+
+        h3 {
+          font-size: 1.1rem;
+          color: var(--accent);
+          margin-bottom: 1rem;
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+
+          .block-icon {
+            width: 1.2rem;
+            height: 1.2rem;
+          }
+        }
+
+        ul {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+
+          li {
+            color: var(--text-light);
+            line-height: 1.6;
+            margin-bottom: 0.8rem;
+            padding-left: 1.5rem;
+            position: relative;
+
+            &::before {
+              content: '';
+              position: absolute;
+              left: 0;
+              top: 0.5rem;
+              width: 6px;
+              height: 6px;
+              border-radius: 50%;
+              background-color: var(--accent);
+            }
+          }
+        }
+      }
+
+      .tips-block {
+        background: rgba(76, 175, 80, 0.1);
+        padding: 1rem;
+        border-radius: var(--radius);
+        border-left: 4px solid var(--success);
+
+        h3 {
+          color: var(--success);
+        }
+
+        li::before {
+          background-color: var(--success);
+        }
+      }
+
+      .warnings-block {
+        background: rgba(255, 152, 0, 0.1);
+        padding: 1rem;
+        border-radius: var(--radius);
+        border-left: 4px solid var(--warning);
+
+        h3 {
+          color: var(--warning);
+        }
+
+        li::before {
+          background-color: var(--warning);
+        }
+      }
+    }
+  }
+
+  .work-coal-footer {
+    margin-top: 3rem;
+    text-align: center;
+    padding: 2rem;
+    background: rgba(228, 167, 136, 0.1);
+    border-radius: var(--radius);
+    border: 1px solid rgba(228, 167, 136, 0.2);
+
+    .footer-tip {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+
+      .footer-icon {
+        width: 2rem;
+        height: 2rem;
+        color: var(--accent);
+        flex-shrink: 0;
+      }
+
+      p {
+        font-size: 1.1rem;
+        color: var(--text-light);
+        margin: 0;
+        font-style: italic;
+      }
+    }
+  }
+}
+
+@keyframes fadeInWorkCoal {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+// Адаптивность
+@media (max-width: 768px) {
+  .work-coal {
+    padding: 1rem 0.5rem;
+
+    .work-coal-header {
+      padding: 1.5rem 1rem;
+      margin-bottom: 2rem;
+
+      .work-coal-title {
+        font-size: 2rem;
+        flex-direction: column;
+        gap: 0.5rem;
+
+        .title-icon {
+          width: 2rem;
+          height: 2rem;
+        }
+      }
+
+      .work-coal-subtitle {
+        font-size: 1rem;
+      }
+    }
+
+    .work-coal-section {
+      .work-coal-section-header {
+        padding: 1rem;
+
+        .section-title-wrapper {
+          .section-title {
+            font-size: 1.1rem;
+          }
+        }
+      }
+
+      .work-coal-section-content {
+        padding: 0 1rem 1rem;
+
+        .description-block,
+        .tips-block,
+        .warnings-block {
+          h3 {
+            font-size: 1rem;
+          }
+
+          li {
+            font-size: 0.95rem;
+          }
+        }
+      }
+    }
+
+    .work-coal-footer {
+      padding: 1.5rem 1rem;
+
+      .footer-tip {
+        flex-direction: column;
+        gap: 0.5rem;
+
+        p {
+          font-size: 1rem;
+          text-align: center;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .work-coal {
+    .work-coal-header {
+      .work-coal-title {
+        font-size: 1.5rem;
+      }
+
+      .work-coal-subtitle {
+        font-size: 0.9rem;
+      }
+    }
+
+    .work-coal-section {
+      .work-coal-section-header {
+        .section-title-wrapper {
+          .section-title {
+            font-size: 1rem;
+          }
+        }
+      }
+
+      .work-coal-section-content {
+        .description-block,
+        .tips-block,
+        .warnings-block {
+          li {
+            font-size: 0.9rem;
+            padding-left: 1.2rem;
+          }
+        }
+      }
+    }
+  }
+} 
