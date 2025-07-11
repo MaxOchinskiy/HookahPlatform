@@ -46,52 +46,6 @@ const Home: React.FC = () => {
 
     return (
         <section className="home">
-            {/* Hero Section */}
-            <div className="hero-section">
-                <div className="hero-content">
-                    <div className="hero-header">
-                        <div className="hero-badge">
-                            <Coffee className="badge-icon" />
-                            <span>Лучшая платформа для любителей кальянов</span>
-                        </div>
-                        <h1 className="hero-title">
-                            Добро пожаловать в 
-                            <span className="title-accent"> Hookah Club</span>
-                        </h1>
-                        <p className="hero-subtitle">
-                            Откройте для себя лучшие кальянные, присоединитесь к сообществу 
-                            и погрузитесь в мир кальянной культуры
-                        </p>
-                    </div>
-
-                    <div className="hero-actions">
-                        <Link to="/community" className="btn-primary">
-                            <Users className="btn-icon" />
-                            <span>Присоединиться к сообществу</span>
-                            <ArrowRight className="btn-arrow" />
-                        </Link>
-                        <Link to="/hookah-list" className="btn-secondary">
-                            <MapPin className="btn-icon" />
-                            <span>Найти кальянную</span>
-                        </Link>
-                    </div>
-
-                    <div className="hero-stats">
-                        {stats.map((stat, index) => (
-                            <div key={index} className="stat-item">
-                                <div className="stat-icon-wrapper">
-                                    {stat.icon}
-                                </div>
-                                <div className="stat-content">
-                                    <span className="stat-value">{stat.value}</span>
-                                    <span className="stat-label">{stat.label}</span>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </div>
-
             {/* Features Section */}
             <div className="features-section">
                 <div className="features-container">

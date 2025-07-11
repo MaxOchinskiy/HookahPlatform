@@ -1,34 +1,31 @@
 import React, { useState, useEffect } from "react";
 import { NavLink, useLocation } from "react-router-dom";
-import { 
-    MapPin, 
-    Users, 
-    BookOpen, 
-    Coffee, 
-    LogIn, 
-    Menu, 
+import {
+    MapPin,
+    Users,
+    BookOpen,
+    Coffee,
+    LogIn,
+    Menu,
     X,
     Home
 } from 'lucide-react';
 import "./ComponentsNavBar/StylesNavBar/NavBar.scss";
-import logo from '../Image/logo.png';
+
+
+
 
 const navLinks = [
     { name: 'Главная', path: '/', icon: <Home /> },
-    { name: 'Кальянные', path: '/hookahs', icon: <MapPin /> },
+    { name: 'Кальянные', path: '/hookah-list', icon: <MapPin /> },
     { name: 'Сообщество', path: '/community', icon: <Users /> },
     { name: 'Обучение', path: '/education', icon: <BookOpen /> },
-    { name: 'Табаки', path: '/tobacco', icon: <Coffee /> },
+    { name: 'Табаки', path: '/tabaco', icon: <Coffee /> },
 ];
 
 const NavBar: React.FC = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const location = useLocation();
-
-    const toggleMenu = () => {
-        setIsMenuOpen(!isMenuOpen);
-    };
-
     const closeMenu = () => {
         setIsMenuOpen(false);
     };
@@ -52,11 +49,6 @@ const NavBar: React.FC = () => {
         <>
             <div className={`navbar-overlay ${isMenuOpen ? 'active' : ''}`} onClick={closeMenu}></div>
             <nav className="navbar">
-                <NavLink to="/" className="navbar-logo">
-                    <img src={logo} alt="HookahClub Logo" />
-                    <h1>HookahClub</h1>
-                </NavLink>
-
                 <div className="navbar-links-desktop">
                     {navLinks.map((link) => (
                         <NavLink key={link.name} to={link.path} className="navbar-link">
@@ -64,16 +56,11 @@ const NavBar: React.FC = () => {
                             <span>{link.name}</span>
                         </NavLink>
                     ))}
-                </div>
-
-                <div className="navbar-actions">
-                    <button className="navbar-auth-button">
-                        <LogIn />
-                        <span>Войти</span>
-                    </button>
-                    <button className="navbar-menu-toggle" onClick={toggleMenu}>
-                        <Menu />
-                    </button>
+                    <NavLink to="/auth" className="navbar-link">
+                        <span className="navbar-auth-button">
+                            Войти
+                        </span>
+                    </NavLink>
                 </div>
             </nav>
 
@@ -90,11 +77,6 @@ const NavBar: React.FC = () => {
                         <span>{link.name}</span>
                     </NavLink>
                 ))}
-
-                <button className="navbar-auth-button-mobile">
-                    <LogIn />
-                    <span>Войти</span>
-                </button>
             </div>
         </>
     );

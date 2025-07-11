@@ -44,36 +44,7 @@ const Footer: React.FC = React.memo(() => {
             <div className="footer-container">
                 {/* Main Footer Content */}
                 <div className="footer-main">
-                    {/* Logo Section */}
-                    <div className="footer-section">
-                        <div className="footer-logo">
-                            <div className="logo-icon">
-                                <Coffee className="logo-coffee" />
-                            </div>
-                            <div className="logo-text">
-                                Hookah<span className="logo-accent">Club</span>
-                            </div>
-                        </div>
-                        <p className="footer-description">
-                            Лучшая платформа для любителей кальянной культуры. 
-                            Найдите идеальные места для отдыха и присоединитесь к нашему сообществу.
-                        </p>
-                        <div className="footer-social">
-                            {socialLinks.map((social, index) => (
-                                <a 
-                                    key={index}
-                                    href={social.href}
-                                    className="social-link"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    aria-label={social.label}
-                                >
-                                    {social.icon}
-                                </a>
-                            ))}
-                        </div>
-                    </div>
-
+                    {/* Logo Section удалён */}
                     {/* Navigation Links */}
                     <div className="footer-section">
                         <h3 className="footer-title">Навигация</h3>
